@@ -11,8 +11,8 @@ permissions:
   contents: write  # 允许写入仓库内容
 
 env:
-  UPDATE_PY: Clash/alvin9999/update.py
-  UPDATE_MD: Clash/alvin9999/update.md
+  UPDATE_PY: Alvin9999/update.py
+  UPDATE_MD: Alvin9999/update.md
   
 jobs:
   update-wiki-readme:
