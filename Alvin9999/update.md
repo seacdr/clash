@@ -1,4 +1,3 @@
-hysteria2://dongtaiwang.com@195.154.206.231:33880?sni=apple.com&alpn=h3&insecure=1#HYSTERIA2-02
 hysteria2://dongtaiwang.com@[2001:bc8:1203:209::60]:33880?sni=apple.com&alpn=h3&insecure=1#HYSTERIA2-01
 vmess://eyJ2IjogIjIiLCAicHMiOiAiVk1FU1MtMDEiLCAiYWRkIjogIjIwMDE6YmM4OjEyMDM6MjA5Ojo1MCIsICJwb3J0IjogIjIzMDA4IiwgImlkIjogImU5OTRiODA0LTM0NWMtNGU4Yi1hODI3LTdlMDA1Njk0ZDE0NiIsICJhaWQiOiAiMCIsICJzY3kiOiAiYXV0byIsICJuZXQiOiAid3MiLCAidHlwZSI6ICJub25lIiwgImhvc3QiOiAid3d3LmJpbmcuY29tIiwgInBhdGgiOiAiL2dpdGh1Yi5jb20vQWx2aW45OTk5IiwgInRscyI6ICIiLCAic25pIjogIiIsICJhbHBuIjogIiIsICJmcCI6ICIifQ
 vless://77a33d77-7af9-4c33-9556-d6711becca04@195.154.42.111:33009?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.yahoo.com&fp=chrome&pbk=vQxUlk2tCENv9crfrUAp5JdJOZTKhMH7XnoKLqbAYx0&sid=c0d304da0c4dcadc&type=tcp&headerType=none#VLESS-01
