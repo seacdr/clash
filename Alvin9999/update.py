@@ -109,8 +109,11 @@ def fetch_and_process(counters: dict, urls: list, pre_tag="pre", output="Alvin99
 if __name__ == "__main__":
     counters = {"SS": 0, "SSR": 0, "VMESS": 0, "VLESS": 0, "HYSTERIA2": 0}
     urls = [
-        "https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7",
-        "https://github.com/Alvin9999/new-pac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7",
-        "https://github.com/Alvin9999/new-pac/wiki/Goflyway%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7",
+        "https://github.com/Alvin9999-newpac/fanqiang/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7",
+        "https://github.com/Alvin9999-newpac/fanqiang/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7",
+        "https://github.com/Alvin9999-newpac/fanqiang/wiki/Goflyway%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7",
+        "https://github.com/Alvin9999-newpac/newpac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7",
+        "https://github.com/Alvin9999-newpac/newpac/wiki/v2ray%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7",
+        "https://github.com/Alvin9999-newpac/newpac/wiki/Goflyway%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7",
     ]
     fetch_and_process(counters, urls)
