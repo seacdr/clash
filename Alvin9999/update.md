@@ -1,5 +1,5 @@
 hysteria2://alvin9999.com@[2a14:7583:29d9::a]:34567?sni=apple.com&alpn=h3&insecure=1#HYSTERIA2-01
 vmess://eyJ2IjogIjIiLCAicHMiOiAiVk1FU1MtMDEiLCAiYWRkIjogIjJhMTQ6NzU4NDpkMGEyOjphIiwgInBvcnQiOiAiMjM0NTYiLCAiaWQiOiAiYmQ0OGUwYWMtZTkwZS00NDUxLWE0ZjItYWJmMDYxY2ZiODkwIiwgImFpZCI6ICIwIiwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ3cyIsICJ0eXBlIjogIm5vbmUiLCAiaG9zdCI6ICJ3d3cuYmluZy5jb20iLCAicGF0aCI6ICIvYWx2aW45OTk5LmNvbSIsICJ0bHMiOiAiIiwgInNuaSI6ICIiLCAiYWxwbiI6ICIiLCAiZnAiOiAiIn0
-vless://ed2283e4-d134-4c40-b559-d992d4d7162b@157.254.223.24:12008?encryption=none&security=reality&sni=www.lovelive-anime.jp&fp=chrome&pbk=ntiUM671FfaRJhQPvMCGXvb7G1N_bn9whxxuCZhctwo&sid=6a29362fb7243ef3&spx=%2F&type=xhttp&path=%2Falvin9999.com#VLESS-01
+vless://f1539886-009b-493d-8ef6-4902a2451668@89.144.35.225:11335?encryption=none&security=reality&sni=www.j-wave.co.jp&fp=chrome&pbk=n9g9MHHEEg3wXVX7vUCJ44KglxLd292rNT424FCd6Vo&sid=27bb577320995e96&spx=%2F&type=xhttp&path=%2Falvin9999.com#VLESS-01
 ss://YWVzLTI1Ni1nY206YWx2aW45OTk5LmNvbQ@[2a14:7584:d0a1::a]:12345#SS-01
 ssr://c3NyMi43NjI5ODgueHl6OjMzMzM2OmF1dGhfY2hhaW5fYTpjaGFjaGEyMC1pZXRmOnRsczEuMl90aWNrZXRfYXV0aDpaRzl1WjNSaGFYZGhibWN1WTI5dC8_b2Jmc3BhcmFtPSZyZW1hcmtzPVUxTlNMVEF4
