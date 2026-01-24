@@ -1,5 +1,5 @@
 hysteria2://alvin9999.com@[2a14:7583:29d9::a]:34567?sni=apple.com&alpn=h3&insecure=1#HYSTERIA2-01
 vmess://eyJ2IjogIjIiLCAicHMiOiAiVk1FU1MtMDEiLCAiYWRkIjogIjJhMTQ6NzU4NDpkMGEyOjphIiwgInBvcnQiOiAiMjM0NTYiLCAiaWQiOiAiYmQ0OGUwYWMtZTkwZS00NDUxLWE0ZjItYWJmMDYxY2ZiODkwIiwgImFpZCI6ICIwIiwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ3cyIsICJ0eXBlIjogIm5vbmUiLCAiaG9zdCI6ICJ3d3cuYmluZy5jb20iLCAicGF0aCI6ICIvYWx2aW45OTk5LmNvbSIsICJ0bHMiOiAiIiwgInNuaSI6ICIiLCAiYWxwbiI6ICIiLCAiZnAiOiAiIn0
-vless://103ddde9-6752-4299-a015-62fa2817efd7@157.254.223.64:13556?encryption=none&security=reality&sni=www.leercapitulo.co&fp=chrome&pbk=U_B5EGYh3LpoFFgP9P9aWvPUGqJuRPRD3bVg6XQFMXw&sid=8bdf9dc4b222323e&spx=%2F&type=xhttp&path=%2Falvin9999.com#VLESS-01
+vless://bcb13ecb-4f63-4257-ae01-ec5aeaa613a5@157.254.223.64:23000?encryption=none&security=reality&sni=mxj.myanimelist.net&fp=chrome&pbk=dJFLqPCinyadJxJk7zA_DwBOEAvexvm7AZT2Pw84_EY&sid=955275866feece09&spx=%2F&type=xhttp&path=%2Falvin9999.com#VLESS-01
 ss://YWVzLTI1Ni1nY206YWx2aW45OTk5LmNvbQ@[2a14:7584:d0a1::a]:12345#SS-01
 ssr://c3NyMi43NjI5ODgueHl6OjMzMzM2OmF1dGhfY2hhaW5fYTpjaGFjaGEyMC1pZXRmOnRsczEuMl90aWNrZXRfYXV0aDpaRzl1WjNSaGFYZGhibWN1WTI5dC8_b2Jmc3BhcmFtPSZyZW1hcmtzPVUxTlNMVEF4
