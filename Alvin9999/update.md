@@ -1,5 +1,5 @@
 hysteria2://dongtaiwang.com@[2604:6600::5cb]:22288?sni=www.microsoft.com&insecure=1#HYSTERIA2-01
 vmess://eyJ2IjogIjIiLCAicHMiOiAiVk1FU1MtMDEiLCAiYWRkIjogIjIwMDE6YmM4OjMyZDc6MjI1OjoxIiwgInBvcnQiOiAiMjM0NTYiLCAiaWQiOiAiYmQ0OGUwYWMtZTkwZS00NDUxLWE0ZjItYWJmMDYxY2ZiODkwIiwgImFpZCI6ICIwIiwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ3cyIsICJ0eXBlIjogIm5vbmUiLCAiaG9zdCI6ICJ3d3cuYmluZy5jb20iLCAicGF0aCI6ICIvYWx2aW45OTk5LmNvbSIsICJ0bHMiOiAiIiwgInNuaSI6ICIiLCAiYWxwbiI6ICIiLCAiZnAiOiAiIn0
-vless://8b66e552-e89d-4c4f-bb5a-e3d37bf151b8@111.243.102.83:34500?encryption=none&security=reality&sni=www.lovelive-anime.jp &fp=chrome&pbk=Yg6kOijRv1IbFcwhY0WmwJ8KW7YTtux4QlQhekEzNEQ&sid=3a1381d1b2cc9e19&spx=%2F&type=xhttp&path=%2FZTwhzkrWeLnk5ARp8SsoVlVMGn6cSDq8CElbAniRQ9dMR#VLESS-01
+vless://bcb13ecb-4f63-4257-ae01-ec5aeaa613a5@157.254.223.64:23000?encryption=none&security=reality&sni=mxj.myanimelist.net&fp=chrome&pbk=dJFLqPCinyadJxJk7zA_DwBOEAvexvm7AZT2Pw84_EY&sid=955275866feece09&spx=%2F&type=xhttp&path=%2Falvin9999.com#VLESS-01
 ss://YWVzLTI1Ni1nY206YWx2aW45OTk5LmNvbQ@[2001:bc8:32d7:225::2]:12345#SS-01
 ssr://c3NyMi43NjI5ODgueHl6OjMzMzM2OmF1dGhfY2hhaW5fYTpjaGFjaGEyMC1pZXRmOnRsczEuMl90aWNrZXRfYXV0aDpaRzl1WjNSaGFYZGhibWN1WTI5dC8_b2Jmc3BhcmFtPSZyZW1hcmtzPVUxTlNMVEF4
