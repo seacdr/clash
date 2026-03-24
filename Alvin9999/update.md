@@ -1,4 +1,4 @@
-hysteria2://dongtaiwang.com@[2a14:7583:295c::a]:11130?sni=www.microsoft.com&insecure=1#HYSTERIA2-01
+hysteria2://dongtaiwang.com@[2604:6600::5cb]:22288?sni=www.microsoft.com&insecure=1#HYSTERIA2-01
 vmess://eyJ2IjogIjIiLCAicHMiOiAiVk1FU1MtMDEiLCAiYWRkIjogIjJhMTQ6NzU4NDpkMGEyOjphIiwgInBvcnQiOiAiMjM0NTYiLCAiaWQiOiAiYmQ0OGUwYWMtZTkwZS00NDUxLWE0ZjItYWJmMDYxY2ZiODkwIiwgImFpZCI6ICIwIiwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ3cyIsICJ0eXBlIjogIm5vbmUiLCAiaG9zdCI6ICJ3d3cuYmluZy5jb20iLCAicGF0aCI6ICIvYWx2aW45OTk5LmNvbSIsICJ0bHMiOiAiIiwgInNuaSI6ICIiLCAiYWxwbiI6ICIiLCAiZnAiOiAiIn0
 vless://8b66e552-e89d-4c4f-bb5a-e3d37bf151b8@111.243.102.83:34500?encryption=none&security=reality&sni=www.lovelive-anime.jp &fp=chrome&pbk=Yg6kOijRv1IbFcwhY0WmwJ8KW7YTtux4QlQhekEzNEQ&sid=3a1381d1b2cc9e19&spx=%2F&type=xhttp&path=%2FZTwhzkrWeLnk5ARp8SsoVlVMGn6cSDq8CElbAniRQ9dMR#VLESS-01
 ss://YWVzLTI1Ni1nY206YWx2aW45OTk5LmNvbQ@[2a14:7584:d0a1::a]:12345#SS-01
