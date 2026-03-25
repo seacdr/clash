@@ -1,5 +1,5 @@
 hysteria2://dongtaiwang.com@195.154.54.131:40022?sni=www.microsoft.com&insecure=1&mport=41000-42000#HYSTERIA2-01
 vmess://eyJ2IjogIjIiLCAicHMiOiAiVk1FU1MtMDEiLCAiYWRkIjogIjIwMDE6YmM4OjMyZDc6MjI1OjoxIiwgInBvcnQiOiAiMjM0NTYiLCAiaWQiOiAiYmQ0OGUwYWMtZTkwZS00NDUxLWE0ZjItYWJmMDYxY2ZiODkwIiwgImFpZCI6ICIwIiwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ3cyIsICJ0eXBlIjogIm5vbmUiLCAiaG9zdCI6ICJ3d3cuYmluZy5jb20iLCAicGF0aCI6ICIvYWx2aW45OTk5LmNvbSIsICJ0bHMiOiAiIiwgInNuaSI6ICIiLCAiYWxwbiI6ICIiLCAiZnAiOiAiIn0
-vless://58698812-5016-458c-9b21-6e33d575f84d@111.243.110.11:18255?encryption=none&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=z1_FVLAxN66t1373faq2D-BV8B7CyILrwc0vMiYw9Cc&sid=d3c7911a&type=xhttp&path=%2Fz2zMtbJD#VLESS-01
+vless://28148be2-61a7-4f36-8adb-030cc9f82bd0@195.154.56.101:32202?encryption=none&security=reality&sni=www.amazon.com&fp=chrome&pbk=bGe_-nAtOq6_w_2mv6pcmD8RzJP65Tti-vyMP2hAwDc&sid=f57d8f26&type=xhttp&path=%2FG3EEoH63#VLESS-01
 ss://YWVzLTI1Ni1nY206YWx2aW45OTk5LmNvbQ@[2001:bc8:32d7:225::2]:12345#SS-01
 ssr://c3NyMi43NjI5ODgueHl6OjMzMzM2OmF1dGhfY2hhaW5fYTpjaGFjaGEyMC1pZXRmOnRsczEuMl90aWNrZXRfYXV0aDpaRzl1WjNSaGFYZGhibWN1WTI5dC8_b2Jmc3BhcmFtPSZyZW1hcmtzPVUxTlNMVEF4
