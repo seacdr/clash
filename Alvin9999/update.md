@@ -1,4 +1,4 @@
-hysteria2://github.com%2FAlvin9999-newpac%2Ffanqiang@83.243.86.103:12855?sni=www.microsoft.com&insecure=1#HYSTERIA2-02
+hysteria2://github.com%2FAlvin9999-newpac%2Ffanqiang@83.243.86.103:38563?sni=www.microsoft.com&insecure=1#HYSTERIA2-02
 vmess://eyJ2IjogIjIiLCAicHMiOiAiVk1FU1MtMDEiLCAiYWRkIjogIjJhMTQ6NzU4NDpkMTE4OjphIiwgInBvcnQiOiAiMTA3MzYiLCAiaWQiOiAiMmI4ZTBiZmUtMGZiMi00NzViLTkxZGItODI0YjJmNGU5YTFiIiwgImFpZCI6ICIwIiwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ3cyIsICJ0eXBlIjogIm5vbmUiLCAiaG9zdCI6ICIiLCAicGF0aCI6ICIvZ2l0aHViLmNvbS9BbHZpbjk5OTktbmV3cGFjL2ZhbnFpYW5nIiwgInRscyI6ICIiLCAic25pIjogIiIsICJhbHBuIjogIiIsICJmcCI6ICIifQ
 vless://ac121f97-544b-47b3-bf91-eca9c45db548@178.18.147.163:15530?encryption=none&security=reality&sni=www.microsoft.com&fp=chrome&pbk=w8JMWRzOsYUuBeI0i_te745nBRlDocMOTgGMMZLioik&sid=aa45df0f&type=xhttp&path=%2Fgithub.com%2FAlvin9999-newpac%2Ffanqiang#VLESS-01
 hysteria2://github.com%2FAlvin9999-newpac%2Ffanqiang@178.18.147.66:29900?sni=www.microsoft.com&insecure=1#HYSTERIA2-01
