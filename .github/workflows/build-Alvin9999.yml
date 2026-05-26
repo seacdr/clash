@@ -12,7 +12,8 @@ permissions:
 
 env:
   UPDATE_PY: Alvin9999/update.py
-  UPDATE_MD: Alvin9999/update.md
+  SUB64_TXT: Alvin9999/sub64.txt
+  SUB_TXT: Alvin9999/sub.txt
 jobs:
   update-wiki-readme:
     runs-on: ubuntu-latest
@@ -52,16 +53,19 @@ jobs:
       - name: Install Dependencies and Run Update Script
         run: |
           pip install requests beautifulsoup4
-          rm -f ${{ env.UPDATE_MD }}
+          rm -f ${{ env.SUB64_TXT }}
+          rm -f ${{ env.SUB_TXT }}
           python ${{ env.UPDATE_PY }}
 
       # 6. 提交和推送更新
       - name: Commit and Push Updates
         run: |
-          if [[ -f "${{ env.UPDATE_MD }}" ]]; then
+          if [[ -f "${{ env.SUB_TXT }}" ]]; then
             git config --local user.name "github-actions"
             git config --local user.email "actions@github.com"
-            git add ${{ env.UPDATE_MD }}
+            git add ${{ env.SUB_TXT }}
+            base64 ${{ env.SUB_TXT }} > ${{ env.SUB64_TXT }}
+            
             if ! git diff --cached --quiet; then
               git commit -m "Auto update: $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')"
               git push
@@ -70,6 +74,6 @@ jobs:
               exit 1
             fi
           else
-            echo "Error: ${{ env.UPDATE_MD }} not generated"
+            echo "Error: ${{ env.SUB_TXT }} not generated"
             exit 1
           fi
