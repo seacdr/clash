@@ -65,6 +65,7 @@ jobs:
             git config --local user.email "actions@github.com"
             git add ${{ env.SUB_TXT }}
             base64 ${{ env.SUB_TXT }} > ${{ env.SUB64_TXT }}
+            git add ${{ env.SUB64_TXT }}
             
             if ! git diff --cached --quiet; then
               git commit -m "Auto update: $(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')"
