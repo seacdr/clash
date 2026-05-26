@@ -49,7 +49,7 @@ def encode_ssr(main: str, param_dict: dict) -> str:
 
 
 # --------- 主处理函数 ---------
-def fetch_and_process(counters: dict, urls: list, pre_tag="pre", output="Alvin9999/update.md"):
+def fetch_and_process(counters: dict, urls: list, pre_tag="pre", output="Alvin9999/sub.txt"):
     results = []
 
     for url in urls:
