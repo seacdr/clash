@@ -33,7 +33,7 @@ def fetch_and_process(urls, pre_tag="pre", output="Alvin9999/sub.txt"):
             for line in filter(None, (l.strip() for l in pre.get_text().splitlines())):
                 proto = line.split("://")[0] if "://" in line else None
                 if proto in buckets:
-                    buckets[proto].append(line)
+                    buckets[proto].add(line)
 
     # 第二遍：按协议顺序统一编号
     results = []
