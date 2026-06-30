@@ -1,5 +1,5 @@
-hysteria2://github.com%2FAlvin9999-newpac%2Ffanqiang@clash-ip1.934618.xyz:18271?sni=clash-ip1.934618.xyz&insecure=0#hysteria2-01
-hysteria2://github.com%2FAlvin9999-newpac%2Ffanqiang@hy2.313186.xyz:18066?sni=hy2.313186.xyz&insecure=0#hysteria2-02
+hysteria2://github.com%2FAlvin9999-newpac%2Ffanqiang@hy2.313186.xyz:18066?sni=hy2.313186.xyz&insecure=0#hysteria2-01
+hysteria2://github.com%2FAlvin9999-newpac%2Ffanqiang@clash-ip1.934618.xyz:18271?sni=clash-ip1.934618.xyz&insecure=0#hysteria2-02
 vmess://eyJ2IjogIjIiLCAicHMiOiAidm1lc3MtMDEiLCAiYWRkIjogIjIwMDE6YmM4OjMyZDc6MjI1OjozIiwgInBvcnQiOiAiNTUwMDkiLCAiaWQiOiAiY2Q4MGQwYTQtYThlZi00NDkyLWI5NTYtZGE4MmE2Y2VjYWY5IiwgImFpZCI6ICIwIiwgInNjeSI6ICJhdXRvIiwgIm5ldCI6ICJ3cyIsICJ0eXBlIjogIm5vbmUiLCAiaG9zdCI6ICIiLCAicGF0aCI6ICIvMHpOVzU2c0YiLCAidGxzIjogIiIsICJzbmkiOiAiIiwgImFscG4iOiAiIiwgImZwIjogIiJ9
 vless://4e9a2de3-4193-49a9-b7fb-b5fff8479904@[2001:bc8:32d7:302::10]:60277?encryption=none&security=reality&sni=www.lovelive-anime.jp&fp=chrome&pbk=o2mKhGNfc7h3XaxZgmmAWHnWs5FdwciNPoSFMOh2wng&sid=cd0bbb9f&type=xhttp&path=%2FYplI82oo#vless-01
 ssr://c3NyMi43NjI5ODgueHl6OjMzMzM2OmF1dGhfY2hhaW5fYTpjaGFjaGEyMC1pZXRmOnRsczEuMl90aWNrZXRfYXV0aDpaRzl1WjNSaGFYZGhibWN1WTI5dC8_b2Jmc3BhcmFtPSZyZW1hcmtzPWMzTnlMVEF4
