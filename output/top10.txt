@@ -1,30 +1,24 @@
-# Updated at: 2026-08-18 18:55:30 UTC
+# Updated at: 2026-08-18 20:55:06 UTC
 
 # ==================== SS TOP 10 ====================
-# Rank:1 | TCPing:17.09ms | GoogleDelay:2979.78ms | Speed:227.24KB/s | Score:76.24
-ss://YWVzLTI1Ni1nY206ZmFCQW9ENTRrODdVSkc3@15.204.247.124:2375# By EbraSha 🌀
-
-# Rank:2 | TCPing:16.98ms | GoogleDelay:1806.68ms | Speed:120.51KB/s | Score:66.67
-ss://YWVzLTI1Ni1nY206ZmFCQW9ENTRrODdVSkc3@15.204.247.124:2375#%F0%9F%87%BA%F0%9F%87%B8%20Reston%2C%20US%20%C2%B7%20OVH%20%7C%2015.204.247.124
-
-# Rank:3 | TCPing:17.08ms | GoogleDelay:3075.11ms | Speed:154.59KB/s | Score:50.26
-ss://YWVzLTI1Ni1nY206ZmFCQW9ENTRrODdVSkc3@15.204.247.124:2375#Channel%20id%3A%20%40ShadowProxy66%20%F0%9F%87%BA%F0%9F%87%B8
+# Rank:1 | TCPing:17.44ms | GoogleDelay:6419.04ms | Speed:739.53KB/s | Score:115.19
+ss://YWVzLTI1Ni1nY206ZmFCQW9ENTRrODdVSkc3@15.204.247.124:2375# By EbraSha 🔌
 
 # ==================== TROJAN TOP 10 ====================
 # ==================== VMESS TOP 10 ====================
 # ==================== VLESS TOP 10 ====================
 # ==================== HY2 TOP 10 ====================
-# Rank:1 | TCPing:105.23ms | GoogleDelay:1279.64ms | Speed:359.1KB/s | Score:280.41
-hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443?insecure=1&sni=nl1.noesissite.ru# By EbraSha 📀
+# Rank:1 | TCPing:117.42ms | GoogleDelay:773.27ms | Speed:2228.39KB/s | Score:2878.05
+hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443/?insecure=1&sni=nl1.noesissite.ru# By EbraSha 🖥️
 
-# Rank:2 | TCPing:111.07ms | GoogleDelay:1214.49ms | Speed:335.66KB/s | Score:276.15
-hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443/?insecure=1&sni=nl1.noesissite.ru# By EbraSha 🛜
+# Rank:2 | TCPing:109.03ms | GoogleDelay:643.83ms | Speed:1809.12KB/s | Score:2805.58
+hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443?insecure=1&sni=nl1.noesissite.ru# By EbraSha 🚬
 
-# Rank:3 | TCPing:108.17ms | GoogleDelay:1502.17ms | Speed:380.81KB/s | Score:253.34
-hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443?insecure=1&sni=nl1.noesissite.ru#%F0%9F%87%B3%F0%9F%87%B1%20Amsterdam%2C%20NL%20%C2%B7%20Fz%20%7C%20177.3.212.103
+# Rank:3 | TCPing:117.5ms | GoogleDelay:2235.88ms | Speed:2678.24KB/s | Score:1197.31
+hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@nl1.noesissite.ru:443/?insecure=1&sni=nl1.noesissite.ru#%F0%9F%87%B3%F0%9F%87%B1%20Amsterdam%2C%20NL%20%C2%B7%20Fz%20%7C%20nl1.noesissite.ru
 
-# Rank:4 | TCPing:110.98ms | GoogleDelay:1540.95ms | Speed:296.3KB/s | Score:192.16
-hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@nl1.noesissite.ru:443/?insecure=1&sni=nl1.noesissite.ru#%F0%9F%8C%90%20Unknown%20%7C%20nl1.noesissite.ru
+# Rank:4 | TCPing:118.09ms | GoogleDelay:667.15ms | Speed:296.83KB/s | Score:444.26
+hysteria2://C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE@fast.wwwinternetvideo.click:443?insecure=1&security=tls&sni=fast.wwwinternetvideo.click#%E8%8B%B1%E5%9B%BD+V2CROSS.COM
 
-# Rank:5 | TCPing:126.18ms | GoogleDelay:1293.48ms | Speed:228.03KB/s | Score:176.16
-hysteria2://C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE@fast.wwwinternetvideo.click:443?sni=fast.wwwinternetvideo.click#%F0%9F%87%AB%F0%9F%87%AE%20Helsinki%2C%20FI%20%C2%B7%20VPSPay%20Networks%20%7C%20fast.wwwinternetvideo.click%20%232
+# Rank:5 | TCPing:109.95ms | GoogleDelay:1537.7ms | Speed:216.85KB/s | Score:140.93
+hysteria2://C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE@fast.wwwinternetvideo.click:443?security=tls&amp;insecure=1&amp;sni=fast.wwwinternetvideo.click#%F0%9F%87%AB%F0%9F%87%AE%20Helsinki%2C%20FI%20%C2%B7%20VPSPay%20Networks%20%7C%20fast.wwwinternetvideo.click%20%231
