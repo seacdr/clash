@@ -339,7 +339,7 @@ def main():
     final_output = [f"# Updated at: {time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())}\n"]
 
     for proto, top10 in final_results.items():
-        final_output.append(f"==================== {proto.upper()} TOP 10 ====================")
+        final_output.append(f"# ==================== {proto.upper()} TOP 10 ====================")
         for idx, item in enumerate(top10, 1):
             info = f"# Rank:{idx} | TCPing:{item['tcping']}ms | GoogleDelay:{item['url_delay']}ms | Speed:{item['speed']}KB/s | Score:{item['score']}"
             final_output.append(f"{info}\n{item['link']}\n")
