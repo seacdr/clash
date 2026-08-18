@@ -22,8 +22,8 @@ PUBLIC_SOURCES = [
 ]
 
 TEST_URL = "https://www.google.com/generate_204"
-DOWNLOAD_URL = "https://speed.cloudflare.com/__down?bytes=10000000"  # 测速10MB文件，测速过程限制读取前5MB
-LOCAL_PORT = 10808
+DOWNLOAD_URL = "https://speed.cloudflare.com/__down?bytes=5000000"  # Cloudflare 5MB 测试文件
+BASE_PORT = 10000  # 多线程 sing-box 独立本地端口起始值
 
 def fetch_links():
     links = set()
@@ -32,7 +32,6 @@ def fetch_links():
             r = requests.get(url, timeout=10)
             if r.status_code == 200:
                 text = r.text.strip()
-                # 尝试Base64解码
                 try:
                     decoded = base64.b64decode(text).decode('utf-8', errors='ignore')
                     lines = decoded.splitlines()
@@ -44,14 +43,13 @@ def fetch_links():
                     if any(line.startswith(p) for p in ['ss://', 'trojan://', 'vmess://', 'vless://', 'hy2://', 'hysteria2://']):
                         links.add(line)
         except Exception as e:
-            print(f"Fetch failed for {url}: {e}")
+            print(f"[Fetch Error] {url}: {e}")
     return list(links)
 
 def parse_node(link):
     try:
         if link.startswith("ss://"):
             proto = "ss"
-            # 处理 ss://链接
             main = link[5:].split('#')[0]
             if '@' in main:
                 user_info, host_port = main.split('@', 1)
@@ -80,25 +78,24 @@ def parse_node(link):
         return None
     return None
 
-def tcping(host, port, timeout=2):
+def tcping(node, timeout=2):
+    host = node['host']
+    port = node['port']
     start = time.time()
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(timeout)
         sock.connect((host, port))
         sock.close()
-        return round((time.time() - start) * 1000, 2)
+        node['tcping'] = round((time.time() - start) * 1000, 2)
+        return node
     except Exception:
         return None
 
 def build_singbox_config(node_link, local_port):
-    # 构建包含单一节点的 sing-box inbound/outbound JSON 配置
-    outbound = {"type": "urltest"} # 占位
-    
-    # 针对不同协议构建 outbound 配置
+    outbound = {}
     if node_link.startswith("ss://"):
         parsed = urllib.parse.urlparse(node_link)
-        # 解码 userinfo
         try:
             userinfo = base64.b64decode(parsed.username + '==').decode('utf-8')
             method, password = userinfo.split(':', 1)
@@ -173,26 +170,23 @@ def build_singbox_config(node_link, local_port):
     }
     return config
 
-def test_proxy_speed(node, local_port):
-    config = build_singbox_config(node['link'], local_port)
-    config_path = f"/tmp/config_{local_port}.json"
+def test_url_delay(args):
+    node, port = args
+    config = build_singbox_config(node['link'], port)
+    config_path = f"/tmp/config_url_{port}.json"
     
     with open(config_path, "w") as f:
         json.dump(config, f)
 
-    # 启动 sing-box
     proc = subprocess.Popen(["sing-box", "run", "-c", config_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    time.sleep(1.5) # 等待内核启动
+    time.sleep(1.2)
 
     proxies = {
-        "http": f"http://127.0.0.1:{local_port}",
-        "https": f"http://127.0.0.1:{local_port}"
+        "http": f"http://127.0.0.1:{port}",
+        "https": f"http://127.0.0.1:{port}"
     }
 
     url_delay = None
-    download_speed = 0  # KB/s
-
-    # 1. Google URL 测试
     try:
         t_start = time.time()
         res = requests.get(TEST_URL, proxies=proxies, timeout=5)
@@ -201,43 +195,76 @@ def test_proxy_speed(node, local_port):
     except Exception:
         pass
 
-    # 2. 如果 URL 测试通过，执行下载文件测速 (最多下载5MB计算速度)
-    if url_delay is not None:
-        try:
-            t_start = time.time()
-            downloaded = 0
-            with requests.get(DOWNLOAD_URL, proxies=proxies, timeout=8, stream=True) as r:
-                r.raise_for_status()
-                for chunk in r.iter_content(chunk_size=1024 * 64):
-                    downloaded += len(chunk)
-                    if downloaded >= 5 * 1024 * 1024 or (time.time() - t_start) > 6:
-                        break
-            dur = time.time() - t_start
-            if dur > 0:
-                download_speed = round((downloaded / 1024) / dur, 2) # KB/s
-        except Exception:
-            download_speed = 0
-
-    # 清理进程与文件
     proc.terminate()
     proc.wait()
     if os.path.exists(config_path):
         os.remove(config_path)
 
-    # 计算综合得分：速度优先，延迟越低加分越多
-    score = (download_speed * 1000) / (url_delay + 1) if url_delay else 0
+    if url_delay is not None:
+        node['url_delay'] = url_delay
+        return node
+    return None
+
+def test_download_speed(args):
+    node, port = args
+    config = build_singbox_config(node['link'], port)
+    config_path = f"/tmp/config_dl_{port}.json"
     
-    return {
-        "link": node['link'],
-        "proto": node['proto'],
-        "tcping": node['tcping'],
-        "url_delay": url_delay,
-        "speed": download_speed,
-        "score": round(score, 2)
+    with open(config_path, "w") as f:
+        json.dump(config, f)
+
+    proc = subprocess.Popen(["sing-box", "run", "-c", config_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    time.sleep(1.2)
+
+    proxies = {
+        "http": f"http://127.0.0.1:{port}",
+        "https": f"http://127.0.0.1:{port}"
     }
 
+    download_speed = 0  # KB/s
+    try:
+        t_start = time.time()
+        
+        # 预热参数：排除前2秒的数据，防止慢启动和握手误判
+        warmup_time = 2.0
+        post_warmup_bytes = 0
+        post_warmup_start = None
+
+        with requests.get(DOWNLOAD_URL, proxies=proxies, timeout=12, stream=True) as r:
+            r.raise_for_status()
+            for chunk in r.iter_content(chunk_size=1024 * 64):
+                now = time.time()
+                elapsed = now - t_start
+
+                # 记录预热2秒后的数据
+                if elapsed >= warmup_time:
+                    if post_warmup_start is None:
+                        post_warmup_start = now
+                    post_warmup_bytes += len(chunk)
+
+                if elapsed > 10:  # 超时保护
+                    break
+
+        if post_warmup_start and post_warmup_bytes > 0:
+            duration = time.time() - post_warmup_start
+            if duration > 0:
+                download_speed = round((post_warmup_bytes / 1024) / duration, 2)
+
+    except Exception:
+        download_speed = 0
+
+    proc.terminate()
+    proc.wait()
+    if os.path.exists(config_path):
+        os.remove(config_path)
+
+    node['speed'] = download_speed
+    score = (download_speed * 1000) / (node['url_delay'] + 1)
+    node['score'] = round(score, 2)
+    return node
+
 def main():
-    print("Fetching nodes from public sources...")
+    print("=== Step 1: Fetching Raw Nodes ===")
     raw_links = fetch_links()
     print(f"Total raw nodes fetched: {len(raw_links)}")
 
@@ -247,62 +274,81 @@ def main():
         if item and item['host'] and item['port']:
             parsed_nodes.append(item)
 
-    # 第一阶段：并发 TCPing 筛选
-    print("Phase 1: TCPing batch filter...")
-    valid_nodes = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
-        future_to_node = {executor.submit(tcping, n['host'], n['port']): n for n in parsed_nodes}
-        for future in concurrent.futures.as_completed(future_to_node):
-            node = future_to_node[future]
-            latency = future.result()
-            if latency is not None:
-                node['tcping'] = latency
-                valid_nodes.append(node)
-
-    print(f"TCPing passed nodes: {len(valid_nodes)}")
-
-    # 按协议分组，每种协议取 TCPing 前 30 名进行实际代理测速（节省 GitHub Actions 时间）
     proto_groups = {"ss": [], "trojan": [], "vmess": [], "vless": [], "hy2": []}
-    for n in valid_nodes:
+    for n in parsed_nodes:
         p = n['proto']
         if p in proto_groups:
             proto_groups[p].append(n)
 
-    tested_results = {"ss": [], "trojan": [], "vmess": [], "vless": [], "hy2": []}
-
-    # 第二阶段：sing-box URL & 下载速度测试
-    print("Phase 2: Running sing-box proxy speed tests...")
-    port_counter = LOCAL_PORT
+    final_results = {}
 
     for proto, nodes in proto_groups.items():
-        # 优先测 TCPing 最低的前 30 个
-        nodes = sorted(nodes, key=lambda x: x['tcping'])[:30]
-        print(f"Testing protocol [{proto}] - Count: {len(nodes)}")
+        print(f"\n---------------- Processing [{proto.upper()}] (Total: {len(nodes)}) ----------------")
         
-        for n in nodes:
-            res = test_proxy_speed(n, port_counter)
-            if res['url_delay'] is not None and res['speed'] > 0:
-                tested_results[proto].append(res)
-
-    # 排序并提取 Top 10
-    final_output = []
-    final_output.append(f"# Updated at: {time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())}\n")
-
-    for proto, results in tested_results.items():
-        # 根据 综合得分 降序排列
-        top10 = sorted(results, key=lambda x: x['score'], reverse=True)[:10]
+        # 1. TCPing 保留前 200
+        print(f"[{proto}] Stage 1: Multi-threaded TCPing Test...")
+        tcp_passed = []
+        with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
+            futures = [executor.submit(tcping, n) for n in nodes]
+            for future in concurrent.futures.as_completed(futures):
+                res = future.result()
+                if res:
+                    tcp_passed.append(res)
         
+        tcp_passed = sorted(tcp_passed, key=lambda x: x['tcping'])[:200]
+        print(f"[{proto}] Stage 1 Passed: {len(tcp_passed)} nodes (Keep Top 200)")
+
+        if not tcp_passed:
+            final_results[proto] = []
+            continue
+
+        # 2. URL 测试保留前 50
+        print(f"[{proto}] Stage 2: Multi-threaded Google URL Test...")
+        url_passed = []
+        url_tasks = [(node, BASE_PORT + idx) for idx, node in enumerate(tcp_passed)]
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            futures = [executor.submit(test_url_delay, task) for task in url_tasks]
+            for future in concurrent.futures.as_completed(futures):
+                res = future.result()
+                if res:
+                    url_passed.append(res)
+
+        url_passed = sorted(url_passed, key=lambda x: x['url_delay'])[:50]
+        print(f"[{proto}] Stage 2 Passed: {len(url_passed)} nodes (Keep Top 50)")
+
+        if not url_passed:
+            final_results[proto] = []
+            continue
+
+        # 3. 下载速度测试：降低并发为 5，过滤前 2 秒预热，精准计算节点速度
+        print(f"[{proto}] Stage 3: Multi-threaded Download Speed Test (Warmup 2s excluded)...")
+        download_results = []
+        dl_tasks = [(node, BASE_PORT + 500 + idx) for idx, node in enumerate(url_passed)]
+        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+            futures = [executor.submit(test_download_speed, task) for task in dl_tasks]
+            for future in concurrent.futures.as_completed(futures):
+                res = future.result()
+                if res and res['speed'] > 0:
+                    download_results.append(res)
+
+        top10 = sorted(download_results, key=lambda x: x['score'], reverse=True)[:10]
+        print(f"[{proto}] Stage 3 Completed: Top {len(top10)} selected!")
+        final_results[proto] = top10
+
+    print("\n=== Saving Top 10 Results ===")
+    final_output = [f"# Updated at: {time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())}\n"]
+
+    for proto, top10 in final_results.items():
         final_output.append(f"==================== {proto.upper()} TOP 10 ====================")
         for idx, item in enumerate(top10, 1):
-            info = f"# Rank:{idx} | TCPing:{item['tcping']}ms | GoogleDelay:{item['url_delay']}ms | Speed:{item['speed']}KB/s"
+            info = f"# Rank:{idx} | TCPing:{item['tcping']}ms | GoogleDelay:{item['url_delay']}ms | Speed:{item['speed']}KB/s | Score:{item['score']}"
             final_output.append(f"{info}\n{item['link']}\n")
 
-    # 保存文件
     os.makedirs("output", exist_ok=True)
     with open("output/top10.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(final_output))
 
-    print("Task completed! Saved to output/top10.txt")
+    print("All tasks finished successfully! Output saved to output/top10.txt")
 
 if __name__ == "__main__":
     main()
