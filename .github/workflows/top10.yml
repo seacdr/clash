@@ -36,38 +36,22 @@ jobs:
           pip install requests
 
       - name: Install sing-box
-        shell: bash
         run: |
           set -euo pipefail
-
-          VERSION="$(python - <<'PY'
-          import json
-          import urllib.request
-
-          req = urllib.request.Request(
-              "https://api.github.com/repos/SagerNet/sing-box/releases/latest",
-              headers={"User-Agent": "top10-node-collector"}
-          )
-          with urllib.request.urlopen(req, timeout=20) as r:
-              data = json.load(r)
-
-          print(data["tag_name"].lstrip("v"))
-          PY
-          )"
-
-          echo "Installing sing-box ${VERSION}"
-
-          ARCHIVE="sing-box-${VERSION}-linux-amd64.tar.gz"
-          URL="https://github.com/SagerNet/sing-box/releases/download/v${VERSION}/${ARCHIVE}"
-
-          curl -fL --retry 3 "$URL" -o /tmp/sing-box.tar.gz
-          tar -xzf /tmp/sing-box.tar.gz -C /tmp
-
-          BIN="$(find /tmp -type f -name sing-box -perm -111 | head -n 1)"
-          test -n "$BIN"
-
-          sudo install -m 0755 "$BIN" /usr/local/bin/sing-box
-          sing-box version
+          # 1. 创建专用临时工作目录
+          mkdir -p /tmp/sing-box-install
+          cd /tmp/sing-box-install
+          
+          # 2. 下载与解压
+          curl -sSL -O https://github.com/SagerNet/sing-box/releases/download/v1.13.19/sing-box-1.13.19-linux-amd64.tar.gz
+          tar -xzf sing-box-1.13.19-linux-amd64.tar.gz
+          
+          # 3. 明确指明路径移动文件，不使用 find 命令
+          sudo cp sing-box-1.13.19-linux-amd64/sing-box /usr/local/bin/
+          sudo chmod +x /usr/local/bin/sing-box
+          
+          # 4. 清理临时文件
+          cd / && rm -rf /tmp/sing-box-install
 
       - name: Download, benchmark and rank Top10
         env:
