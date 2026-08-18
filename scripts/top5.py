@@ -20,7 +20,7 @@ import requests
 
 OUTPUT_FILE = "output/top5.txt"
 
-TOP_N = 5
+TOP_N = 10
 
 # TCP connection timeout
 CONNECT_TIMEOUT = 2.5
