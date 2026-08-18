@@ -1,0 +1,60 @@
+name: Update Top5 Proxy Nodes
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    # 每 30 分钟执行一次
+    - cron: "7,37 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: top5-update
+  cancel-in-progress: true
+
+jobs:
+  update-top5:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Download, test and select Top5
+        run: |
+          python scripts/top5.py
+
+      - name: Show result
+        run: |
+          echo "========== Top5/sub.txt =========="
+          cat Top5/sub.txt
+          echo "=================================="
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add Top5/sub.txt
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "chore: update Top5 nodes"
+            git push
+          fi

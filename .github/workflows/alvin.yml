@@ -11,9 +11,9 @@ permissions:
   contents: write
 
 env:
-  UPDATE_PY: Alvin9999/sub.py
-  SUB_TXT: Alvin9999/sub.txt
-  SUB64_TXT: Alvin9999/sub64.txt
+  UPDATE_PY: scripts/alvin.py
+  SUB_TXT: output/alvin.txt
+  SUB64_TXT: output/alvin_64.txt
 jobs:
   update-wiki-readme:
     runs-on: ubuntu-latest

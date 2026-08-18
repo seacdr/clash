@@ -22,7 +22,7 @@ HANDLERS = {
 
 PROTOS = list(HANDLERS)  # 排序依据，也定义协议优先级
 
-def fetch_and_process(urls, pre_tag="pre", output="Alvin9999/sub.txt"):
+def fetch_and_process(urls, pre_tag="pre", output="output/alvin.txt"):
     # 第一遍：收集原始行，按协议分桶（自动去重）
     buckets = {p: set() for p in PROTOS}
 
@@ -45,7 +45,7 @@ def fetch_and_process(urls, pre_tag="pre", output="Alvin9999/sub.txt"):
     with open(output, "w", encoding="utf-8") as f:
         f.write("\n".join(results))
 
-    sub64 = os.path.join(os.path.dirname(output), "sub64.txt")
+    sub64 = os.path.join(os.path.dirname(output), "alvin_64.txt")
     with open(sub64, "w", encoding="utf-8") as f:
         f.write(base64.b64encode("\n".join(results).encode()).decode())
 
