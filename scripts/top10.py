@@ -98,7 +98,7 @@ async def test_tcping_for_nodes(node_list):
             candidates.append({"node": node, "ping": ping})
             
     # 按 TCPing 升序排序
-    candidates.sort(key=x: x["ping"])
+    candidates.sort(key=lambda x: x["ping"])
     return candidates
 
 def test_download_speed(node_info):
