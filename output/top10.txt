@@ -1,21 +1,36 @@
-# Updated at: 2026-08-18 15:28:20 UTC
+# Updated at: 2026-08-18 17:01:29 UTC
 
 # ==================== SS TOP 10 ====================
 # ==================== TROJAN TOP 10 ====================
 # ==================== VMESS TOP 10 ====================
 # ==================== VLESS TOP 10 ====================
 # ==================== HY2 TOP 10 ====================
-# Rank:1 | TCPing:137.28ms | GoogleDelay:680.83ms | Speed:6647.65KB/s | Score:9749.72
-hysteria2://53c76647-14d1-4df5-99cb-be99ad2e6bd9@de104.mechvpn.online:443?security=tls&amp;insecure=1&amp;sni=de104.mechvpn.online#%F0%9F%87%A9%F0%9F%87%AA%20Frankfurt%20Am%20Main%2C%20DE%20%C2%B7%20Sculk%20%7C%20de104.mechvpn.online%20%232
+# Rank:1 | TCPing:161.24ms | GoogleDelay:773.92ms | Speed:19876.62KB/s | Score:25649.9
+hysteria2://YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc@admin.wwwinternetvideo.click:443/?insecure=1#%F0%9F%87%B5%F0%9F%87%B1%20Warsaw%2C%20PL%20%C2%B7%20ExpressHost%20%7C%20admin.wwwinternetvideo.click%20%232
 
-# Rank:2 | TCPing:131.94ms | GoogleDelay:1454.45ms | Speed:3910.14KB/s | Score:2686.55
-hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443?insecure=1&sni=nl1.noesissite.ru#%F0%9F%87%B3%F0%9F%87%B1%20Amsterdam%2C%20NL%20%C2%B7%20Fz%20%7C%20177.3.212.103
+# Rank:2 | TCPing:157.08ms | GoogleDelay:757.36ms | Speed:18428.86KB/s | Score:24300.94
+hysteria2://mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj@91.196.32.163:443?insecure=1&sni=germany3.h2corp.local# By EbraSha 🌑
 
-# Rank:3 | TCPing:124.57ms | GoogleDelay:1079.68ms | Speed:2767.33KB/s | Score:2560.73
-hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443/?insecure=1&sni=nl1.noesissite.ru# By EbraSha 🕶️
+# Rank:3 | TCPing:172.65ms | GoogleDelay:779.14ms | Speed:17319.69KB/s | Score:22200.75
+hysteria2://sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX@cabinet.wwwinternetvideo.click:443?security=tls&insecure=1&sni=cabinet.wwwinternetvideo.click#%F0%9F%87%A6%F0%9F%87%AA%20United%20Arab%20Emirates%20%C2%B7%20ExpressHost%20%7C%20cabinet.wwwinternetvideo.click%20%232
 
-# Rank:4 | TCPing:120.81ms | GoogleDelay:1256.05ms | Speed:2725.62KB/s | Score:2168.27
-hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@nl1.noesissite.ru:443/?insecure=1&sni=nl1.noesissite.ru#%F0%9F%87%B3%F0%9F%87%B1%20Amsterdam%2C%20NL%20%C2%B7%20Fz%20%7C%20nl1.noesissite.ru
+# Rank:4 | TCPing:166.84ms | GoogleDelay:755.11ms | Speed:13131.17KB/s | Score:17366.75
+hysteria2://sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX@cabinet.wwwinternetvideo.click:443?sni=127.0.0.1#%F0%9F%87%A6%F0%9F%87%AA%20United%20Arab%20Emirates%20%C2%B7%20ExpressHost%20%7C%20cabinet.wwwinternetvideo.click%20%233
 
-# Rank:5 | TCPing:129.18ms | GoogleDelay:2391.95ms | Speed:167.04KB/s | Score:69.81
-hysteria2://C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE@fast.wwwinternetvideo.click:443?insecure=1&security=tls&sni=fast.wwwinternetvideo.click#%E8%8B%B1%E5%9B%BD+V2CROSS.COM
+# Rank:5 | TCPing:154.49ms | GoogleDelay:723.54ms | Speed:9897.48KB/s | Score:13660.36
+hysteria2://mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj@91.196.32.163:443/?insecure=1&sni=germany3.h2corp.local# By EbraSha 🔥
+
+# Rank:6 | TCPing:168.01ms | GoogleDelay:809.89ms | Speed:5116.98KB/s | Score:6310.33
+hysteria2://53c76647-14d1-4df5-99cb-be99ad2e6bd9@de104.mechvpn.online:443?alpn=h3&sni=de104.mechvpn.online&fp=firefox#%F0%9F%87%A9%F0%9F%87%AA%20Frankfurt%20Am%20Main%2C%20DE%20%C2%B7%20Sculk%20%7C%20de104.mechvpn.online%20%231
+
+# Rank:7 | TCPing:144.13ms | GoogleDelay:1324.33ms | Speed:629.7KB/s | Score:475.13
+hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443/?insecure=1&sni=nl1.noesissite.ru# By EbraSha ⌨️
+
+# Rank:8 | TCPing:143.5ms | GoogleDelay:1348.84ms | Speed:571.28KB/s | Score:423.22
+hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443?insecure=1&sni=nl1.noesissite.ru# By EbraSha 🛡️
+
+# Rank:9 | TCPing:158.22ms | GoogleDelay:1915.69ms | Speed:390.77KB/s | Score:203.88
+hysteria2://C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE@fast.wwwinternetvideo.click:443?security=tls&insecure=1&sni=fast.wwwinternetvideo.click#%F0%9F%87%AB%F0%9F%87%AE%20Helsinki%2C%20FI%20%C2%B7%20VPSPay%20Networks%20%7C%20fast.wwwinternetvideo.click%20%231
+
+# Rank:10 | TCPing:149.63ms | GoogleDelay:3028.0ms | Speed:615.05KB/s | Score:203.05
+hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@nl1.noesissite.ru:443/?insecure=1&sni=nl1.noesissite.ru# By EbraSha ⚙️
