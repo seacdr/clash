@@ -35,7 +35,7 @@ jobs:
       - name: Run Speed Test Script
         run: |
           mkdir -p output
-          python scripts/top10.py
+          python -u scripts/top10.py   # -u 参数，强制实时无缓冲输出
 
       - name: Commit and Push Results
         run: |
