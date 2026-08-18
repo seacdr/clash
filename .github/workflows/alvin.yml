@@ -70,7 +70,7 @@ jobs:
               git push
             else
               echo "No changes detected"
-              exit 1
+              exit 0
             fi
           else
             echo "Error: ${{ env.SUB_TXT }} not generated"
