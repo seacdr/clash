@@ -41,8 +41,8 @@ jobs:
 
       - name: Show result
         run: |
-          echo "========== Top5/sub.txt =========="
-          cat Top5/sub.txt
+          echo "========== output/top5.txt =========="
+          cat output/top5.txt
           echo "=================================="
 
       - name: Commit changes
@@ -50,7 +50,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add Top5/sub.txt
+          git add output/top5.txt
 
           if git diff --cached --quiet; then
             echo "No changes."
