@@ -1,4 +1,4 @@
-name: Update Top5 Proxy Nodes
+name: Auto Sub Top5
 
 on:
   workflow_dispatch:
