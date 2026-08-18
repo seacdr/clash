@@ -1,102 +1,21 @@
-# Top 10 Nodes Updated at: 2026-08-18 13:03:00 UTC
+# Updated at: 2026-08-18 15:28:20 UTC
 
-==================== HYSTERIA2 TOP 10 ====================
-[1] Ping: 41.4ms | Speed: 500.0KB/s
-hy2://c5110090-c3a2-429e-b9b8-072b6535be1b@144.202.119.175:8080?sni=jp2.trojanws.xyz#%F0%9F%87%BA%F0%9F%87%B8%20Los%20Angeles%2C%20US%20%C2%B7%20The%20Constant%20Company%20%7C%20144.202.119.175
+# ==================== SS TOP 10 ====================
+# ==================== TROJAN TOP 10 ====================
+# ==================== VMESS TOP 10 ====================
+# ==================== VLESS TOP 10 ====================
+# ==================== HY2 TOP 10 ====================
+# Rank:1 | TCPing:137.28ms | GoogleDelay:680.83ms | Speed:6647.65KB/s | Score:9749.72
+hysteria2://53c76647-14d1-4df5-99cb-be99ad2e6bd9@de104.mechvpn.online:443?security=tls&amp;insecure=1&amp;sni=de104.mechvpn.online#%F0%9F%87%A9%F0%9F%87%AA%20Frankfurt%20Am%20Main%2C%20DE%20%C2%B7%20Sculk%20%7C%20de104.mechvpn.online%20%232
 
-[2] Ping: 61.5ms | Speed: 500.0KB/s
-hysteria2://suAmQS9LlInNq4Wumh-FUF4GGlpgmG_g@159.223.157.129:8443?insecure=1&sni=www.microsoft.com#%F0%9F%87%BA%F0%9F%87%B8%20North%20Bergen%2C%20US%20%C2%B7%20DigitalOcean%20%7C%20159.223.157.129%20%231
+# Rank:2 | TCPing:131.94ms | GoogleDelay:1454.45ms | Speed:3910.14KB/s | Score:2686.55
+hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443?insecure=1&sni=nl1.noesissite.ru#%F0%9F%87%B3%F0%9F%87%B1%20Amsterdam%2C%20NL%20%C2%B7%20Fz%20%7C%20177.3.212.103
 
-[3] Ping: 66.4ms | Speed: 500.0KB/s
-hy2://f6e4b19a3110d19d@207.246.124.135:443?obfs=salamander&obfs-password=8c3ce17b&insecure=1&sni=vkvd127.mycdn.me#%F0%9F%87%BA%F0%9F%87%B8%20Piscataway%2C%20US%20%C2%B7%20The%20Constant%20Company%20%7C%20207.246.124.135%20%231
+# Rank:3 | TCPing:124.57ms | GoogleDelay:1079.68ms | Speed:2767.33KB/s | Score:2560.73
+hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443/?insecure=1&sni=nl1.noesissite.ru# By EbraSha 🕶️
 
-[4] Ping: 69.1ms | Speed: 500.0KB/s
-hy2://KevinZakarian@66.23.198.32:443?obfs=salamander&obfs-password=KevinZakarian&insecure=1#%F0%9F%87%BA%F0%9F%87%B8%20Norristown%2C%20US%20%C2%B7%20Redoubt%20Networks%20%7C%2066.23.198.32%20%231
+# Rank:4 | TCPing:120.81ms | GoogleDelay:1256.05ms | Speed:2725.62KB/s | Score:2168.27
+hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@nl1.noesissite.ru:443/?insecure=1&sni=nl1.noesissite.ru#%F0%9F%87%B3%F0%9F%87%B1%20Amsterdam%2C%20NL%20%C2%B7%20Fz%20%7C%20nl1.noesissite.ru
 
-[5] Ping: 70.8ms | Speed: 500.0KB/s
-hy2://KevinZakarian@66.23.198.26:443?obfs=salamander&obfs-password=KevinZakarian&insecure=1#%F0%9F%87%BA%F0%9F%87%B8%20Norristown%2C%20US%20%C2%B7%20Redoubt%20Networks%20%7C%2066.23.198.26%20%231
-
-[6] Ping: 71.1ms | Speed: 500.0KB/s
-hy2://KevinZakarian@66.23.198.27:443?obfs=salamander&obfs-password=KevinZakarian&insecure=1#%F0%9F%87%BA%F0%9F%87%B8%20Norristown%2C%20US%20%C2%B7%20Redoubt%20Networks%20%7C%2066.23.198.27%20%231
-
-[7] Ping: 72.9ms | Speed: 500.0KB/s
-hy2://KevinZakarian@66.23.198.30:443?obfs=salamander&obfs-password=KevinZakarian&insecure=1#%F0%9F%87%BA%F0%9F%87%B8%20Norristown%2C%20US%20%C2%B7%20Redoubt%20Networks%20%7C%2066.23.198.30%20%231
-
-[8] Ping: 76.4ms | Speed: 500.0KB/s
-hy2://f6e4b19a3110d19d@207.246.124.135:443?obfs=salamander&obfs-password=8c3ce17b&insecure=1&sni=google.com#%F0%9F%87%BA%F0%9F%87%B8%20Piscataway%2C%20US%20%C2%B7%20The%20Constant%20Company%20%7C%20207.246.124.135%20%232
-
-[9] Ping: 81.3ms | Speed: 500.0KB/s
-hy2://gf1:gfhysteria2024@66.94.121.46:443
-
-[10] Ping: 83.9ms | Speed: 500.0KB/s
-hy2://sysadmin.sysadmin@37.123.193.73:443?insecure=1#%F0%9F%87%BA%F0%9F%87%B8%20San%20Jose%2C%20US%20%C2%B7%20Hk%20Cedoc%20Limited%20%7C%2037.123.193.73
-
-
-==================== VLESS TOP 10 ====================
-
-==================== VMESS TOP 10 ====================
-[1] Ping: 630.9ms | Speed: 500.0KB/s
-vmess://eyJ2IjoiMiIsInBzIjoiXHVEODNDXHVERjEwIENsb3VkZmxhcmUgfCAxMDQuMjYuMC4yMTggIzMiLCJhZGQiOiIxMDQuMjYuMC4yMTgiLCJwb3J0IjoiODg4MCIsImlkIjoiOTBmOGY0ZGMtODA5Mi00MzU1LTkwNDctMDVmNTA2ZjVlOWFiIiwiYWlkIjowLCJuZXQiOiJ3cyIsInR5cGUiOiJub25lIiwiaG9zdCI6Im0xLjEwNjc3OC54eXoiLCJwYXRoIjoiZ2l0aHViLmNvbS9BbHZpbjk5OTkiLCJ0bHMiOiIifQ==
-
-[2] Ping: 631.2ms | Speed: 500.0KB/s
-vmess://eyJ2IjoiMiIsInBzIjoiXHVEODNDXHVERjEwIENsb3VkZmxhcmUgfCAxNzMuMjQ1LjQ5LjEwICMzIiwiYWRkIjoiMTczLjI0NS40OS4xMCIsInBvcnQiOiI4NDQzIiwiaWQiOiJhNmEzN2UwNC01ZTgxLTQ0YzktYmU1My1iYWEzZmY0NmViOGIiLCJhaWQiOjAsIm5ldCI6IndzIiwidHlwZSI6Im5vbmUiLCJob3N0IjoiMTczLjI0NS40OS4xMCIsInBhdGgiOiIiLCJ0bHMiOiJ0bHMifQ==
-
-[3] Ping: 631.5ms | Speed: 500.0KB/s
-vmess://eyJ2IjoiMiIsInBzIjoiXHVEODNDXHVERjEwIENsb3VkZmxhcmUgfCAxMDQuMjYuMC4yMTIgIzEiLCJhZGQiOiIxMDQuMjYuMC4yMTIiLCJwb3J0IjoiMjA4NiIsImlkIjoiYmM2NWZhYzItN2RjNy00MjZmLWFjZGQtMDc3OWE1MDM1YmRlIiwiYWlkIjowLCJuZXQiOiJ3cyIsInR5cGUiOiJub25lIiwiaG9zdCI6InAxLjYxMzA1NS54eXoiLCJwYXRoIjoiZ2l0aHViLmNvbS9BbHZpbjk5OTkiLCJ0bHMiOiIifQ==
-
-[4] Ping: 631.6ms | Speed: 500.0KB/s
-vmess://eyJ2IjoiMiIsInBzIjoiXHVEODNDXHVERjEwIENsb3VkZmxhcmUgfCAxMDQuMjYuMC4xNDYgIzIiLCJhZGQiOiIxMDQuMjYuMC4xNDYiLCJwb3J0IjoiMjA4NiIsImlkIjoiYmM2NWZhYzItN2RjNy00MjZmLWFjZGQtMDc3OWE1MDM1YmRlIiwiYWlkIjowLCJuZXQiOiJ3cyIsInR5cGUiOiJub25lIiwiaG9zdCI6InAxLjYxMzA1NS54eXoiLCJwYXRoIjoiZ2l0aHViLmNvbS9BbHZpbjk5OTkiLCJ0bHMiOiIifQ==
-
-[5] Ping: 631.8ms | Speed: 500.0KB/s
-vmess://eyJ2IjoiMiIsInBzIjoiXHVEODNDXHVERjEwIENsb3VkZmxhcmUgfCAxMDQuMTkuNDguMjMiLCJhZGQiOiIxMDQuMTkuNDguMjMiLCJwb3J0IjoiODQ0MyIsImlkIjoiMzkxMzVhMzktZTZjYS00M2RmLWEzNjAtZDg1OWVlYTU4ZDg2IiwiYWlkIjowLCJuZXQiOiJ3cyIsInR5cGUiOiJub25lIiwiaG9zdCI6ImhrMDEubGlua2l0bm93Lm5ldCIsInBhdGgiOiIiLCJ0bHMiOiJ0bHMifQ==
-
-[6] Ping: 631.9ms | Speed: 500.0KB/s
-vmess://ewogICAgImFkZCI6ICIxNDEuMTAxLjExNS45OSIsCiAgICAiYWlkIjogMCwKICAgICJob3N0IjogIiIsCiAgICAiaWQiOiAiMTk0MjhjNDQtODViMy00YTdjLThiYzQtYjU4Mzk2MTM4MzIyIiwKICAgICJuZXQiOiAid3MiLAogICAgInBhdGgiOiAiLyIsCiAgICAicG9ydCI6IDgwLAogICAgInBzIjogIvCfj4FSRUxBWS0xNDEuMTAxLjExNS45OS03OTI4IiwKICAgICJ0bHMiOiAiIiwKICAgICJ0eXBlIjogImF1dG8iLAogICAgInNlY3VyaXR5IjogImF1dG8iLAogICAgInNraXAtY2VydC12ZXJpZnkiOiB0cnVlLAogICAgInNuaSI6ICIiCn0=
-
-[7] Ping: 631.9ms | Speed: 500.0KB/s
-vmess://ewogICAgImFkZCI6ICIxMDQuMTkuNDguMzEiLAogICAgImFpZCI6IDAsCiAgICAiaG9zdCI6ICJoazAxLmxpbmtpdG5vdy5uZXQiLAogICAgImlkIjogIjM5MTM1YTM5LWU2Y2EtNDNkZi1hMzYwLWQ4NTllZWE1OGQ4NiIsCiAgICAibmV0IjogIndzIiwKICAgICJwYXRoIjogIi8iLAogICAgInBvcnQiOiA4NDQzLAogICAgInBzIjogIvCfj4FSRUxBWS0xMDQuMTkuNDguMzEtNzg5OSIsCiAgICAidGxzIjogInRscyIsCiAgICAidHlwZSI6ICJhdXRvIiwKICAgICJzZWN1cml0eSI6ICJhdXRvIiwKICAgICJza2lwLWNlcnQtdmVyaWZ5IjogZmFsc2UsCiAgICAic25pIjogImhrMDEubGlua2l0bm93Lm5ldCIKfQ==
-
-[8] Ping: 632.3ms | Speed: 500.0KB/s
-vmess://eyJhZGQiOiAiMTA0LjI2LjUuMTIzIiwgImFpZCI6ICIwIiwgImhvc3QiOiAiaXAyMC42MDE2NzI1Lnh5eiIsICJpZCI6ICIxOGQ5NjE5MC1jMTBmLTQ0OGYtYTgyYS0yZDM2ZGY1YzNjZGUiLCAibmV0IjogIndzIiwgInBhdGgiOiAiL2dpdGh1Yi5jb20vQWx2aW45OTk5IiwgInBvcnQiOiAyMDk1LCAicHMiOiAiWzQ1MjZdW1VTXVswXVtWTUVTU11bTm9uZV1bTm9uZV1bVW5rbm93bl1bVW5rbm93bl0iLCAidGxzIjogIiIsICJ0eXBlIjogIiIsICJ2IjogIjIifQ==
-
-[9] Ping: 632.3ms | Speed: 500.0KB/s
-vmess://eyJ2IjoiMiIsInBzIjoiXHVEODNDXHVERjEwIENsb3VkZmxhcmUgfCAxNjIuMTU5LjI0NS40MSIsImFkZCI6IjE2Mi4xNTkuMjQ1LjQxIiwicG9ydCI6IjIwNTIiLCJpZCI6IjZlMTNmZjBiLTU1YTYtMzc2Ny04YjkyLTMwOThmZGE0MDkyNyIsImFpZCI6MCwibmV0Ijoid3MiLCJ0eXBlIjoibm9uZSIsImhvc3QiOiJieGEuNzY4OTgxMDIueHl6IiwicGF0aCI6Ii9ieHFtaWFvIiwidGxzIjoiIn0=
-
-[10] Ping: 632.5ms | Speed: 500.0KB/s
-vmess://eyJ2IjoiMiIsInBzIjoiXHVEODNDXHVERjEwIENsb3VkZmxhcmUgfCAxMDQuMjYuMC4xNzEgIzIiLCJhZGQiOiIxMDQuMjYuMC4xNzEiLCJwb3J0IjoiMjA4NiIsImlkIjoiN2Q5MmZmYzktMDJlMS00MDg3LThhNDYtY2M0ZDc2NTYwOTE3IiwiYWlkIjowLCJuZXQiOiJ3cyIsInR5cGUiOiJub25lIiwiaG9zdCI6ImU1LjgwODA3NS54eXoiLCJwYXRoIjoiZ2l0aHViLmNvbS9BbHZpbjk5OTkiLCJ0bHMiOiIifQ==
-
-
-==================== SS TOP 10 ====================
-[1] Ping: 417.9ms | Speed: 500.0KB/s
-ss://YWVzLTEyOC1nY206ZGFpbHljb25maWdzMjAzNw==@185.146.173.45:443#%F0%9F%94%92%20SS-TCP-NA%20%F0%9F%87%B8%F0%9F%87%AA%20SE-185.146.173.45:443
-
-[2] Ping: 418.0ms | Speed: 500.0KB/s
-ss://YWVzLTEyOC1nY206U2hhZG93U29ja3MyMDM3@172.67.190.12:443#%F0%9F%94%92%20SS-TCP-NA%20%F0%9F%8F%B4%E2%80%8D%E2%98%A0%EF%B8%8F%20NA-172.67.190.12:443
-
-[3] Ping: 424.0ms | Speed: 500.0KB/s
-ss://77-9V--_veutvO-_ve-_vTvvv73vv70d77-937xr77-977-9f2bvv71t77-977-977-977-9fDrvv71X77-9662877-977-9O--_ve-_vR3vv73fvGvvv73vv71_Zu-_vW3vv73vv73vv73vv718@212.183.88.232:443# By EbraSha 🎯
-
-[4] Ping: 428.6ms | Speed: 500.0KB/s
-ss://4f013568a58b4b04b5dd4d52bf1c33a4Og==@141.193.213.21:443#%F0%9F%87%BA%F0%9F%87%B8%20United%20States%20%C2%B7%20Cloudflare%20London%20%7C%20141.193.213.21%20%237
-
-[5] Ping: 437.8ms | Speed: 500.0KB/s
-ss://YWVzLTI1Ni1nY206S2l4THZLendqZWtHMDBybQ==@167.88.62.68:8080#%F0%9F%87%BA%F0%9F%87%B8%20Dallas%2C%20US%20%C2%B7%20GTHost%20%7C%20167.88.62.68%20%2312
-
-[6] Ping: 439.6ms | Speed: 500.0KB/s
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpUbVhTcGNSQmJodkhEZzY2Ym8ydzg5YlRveFFzYk1vYQ@31.76.30.79:10808# By EbraSha 🧲
-
-[7] Ping: 439.6ms | Speed: 500.0KB/s
-ss://77-9fTfvv73vv73vv73vv73vv70877-977-9Nn9f77-9ae-_ve-_vXnvv73vv71977-977-91640Ou-_vX0377-977-977-977-977-9PO-_ve-_vTZ_X--_vWnvv73vv71577-977-9fe-_ve-_vdeuNA@104.18.32.69:2086#%5B4202%5D%5BUS%5D%5B0%5D%5BSS%5D%5BNone%5D%5Bext_raw.githubusercontent.com%5D%5B2026-08-16%5D%5B2026-08-16%2000:34%5D
-
-[8] Ping: 440.4ms | Speed: 500.0KB/s
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@173.244.56.6:443#US 🇺🇸 | @Raydikalx | C86ABA
-
-[9] Ping: 440.5ms | Speed: 500.0KB/s
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp0MHNybWR4cm0zeHlqbnZxejlld2x4YjJteXE3cmp1dg@118.163.200.40:2377#%F0%9F%87%B9%F0%9F%87%BC%20North%2C%20TW%20%C2%B7%20Data%20Communication%E2%80%A6%20%7C%20118.163.200.40
-
-[10] Ping: 440.7ms | Speed: 500.0KB/s
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpNanUzWlNhYTRRVms0NW1j@74.50.98.185:8080# By EbraSha 🛜
-
-
-==================== TROJAN TOP 10 ====================
-
+# Rank:5 | TCPing:129.18ms | GoogleDelay:2391.95ms | Speed:167.04KB/s | Score:69.81
+hysteria2://C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE@fast.wwwinternetvideo.click:443?insecure=1&security=tls&sni=fast.wwwinternetvideo.click#%E8%8B%B1%E5%9B%BD+V2CROSS.COM
