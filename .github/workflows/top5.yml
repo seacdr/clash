@@ -48,6 +48,7 @@ jobs:
               "https://api.github.com/repos/SagerNet/sing-box/releases/latest",
               headers={"User-Agent": "top10-node-collector"}
           )
+
           with urllib.request.urlopen(req, timeout=20) as r:
               data = json.load(r)
 
@@ -60,13 +61,36 @@ jobs:
           ARCHIVE="sing-box-${VERSION}-linux-amd64.tar.gz"
           URL="https://github.com/SagerNet/sing-box/releases/download/v${VERSION}/${ARCHIVE}"
 
-          curl -fL --retry 3 "$URL" -o /tmp/sing-box.tar.gz
-          tar -xzf /tmp/sing-box.tar.gz -C /tmp
+          SB_DIR="$RUNNER_TEMP/sing-box"
+          SB_ARCHIVE="$RUNNER_TEMP/sing-box.tar.gz"
 
-          BIN="$(find /tmp -type f -name sing-box -perm -111 | head -n 1)"
-          test -n "$BIN"
+          rm -rf "$SB_DIR"
+          mkdir -p "$SB_DIR"
+
+          curl -fL --retry 3 \
+            --connect-timeout 15 \
+            --max-time 120 \
+            "$URL" \
+            -o "$SB_ARCHIVE"
+
+          tar -xzf "$SB_ARCHIVE" -C "$SB_DIR"
+
+          BIN="$SB_DIR/sing-box-${VERSION}-linux-amd64/sing-box"
+
+          if [ ! -f "$BIN" ]; then
+            echo "Expected sing-box binary not found:"
+            echo "$BIN"
+            echo
+            echo "Extracted files:"
+            find "$SB_DIR" -maxdepth 3 -type f -print
+            exit 1
+          fi
+
+          chmod +x "$BIN"
 
           sudo install -m 0755 "$BIN" /usr/local/bin/sing-box
+
+          echo "Installed:"
           sing-box version
 
       - name: Download, benchmark and rank Top10
