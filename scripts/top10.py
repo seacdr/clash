@@ -13,14 +13,14 @@ PUBLIC_SOURCES = [
     "https://raw.githubusercontent.com/seacdr/clash/refs/heads/master/output/alvin.txt",
     "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
     "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/top100.txt",
-    "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/vless_configs.txt",
-    "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/vmess_configs.txt",
-    "https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/hysteria2.txt",
-    "https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/vless.txt",
-    "https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/vmess.txt",
-    "https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/hy2.txt",
-    "https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/vless.txt",
-    "https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/vmess.txt"
+    #"https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/vless_configs.txt",
+    #"https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/vmess_configs.txt",
+    #"https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/hysteria2.txt",
+    #"https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/vless.txt",
+    #"https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/vmess.txt",
+    #"https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/hy2.txt",
+    #"https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/vless.txt",
+    #"https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/vmess.txt"
 ]
 
 TEST_URL = "https://www.google.com/generate_204"
