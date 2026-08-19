@@ -347,13 +347,15 @@ def main():
             final_output.append(f"{info}\n{item['link']}\n")
 
     os.makedirs("output", exist_ok=True)
-    # 过滤掉空行和以 '#' 开头的注释/元数据行
+    # 1. 过滤掉空行和以 '#' 开头的注释/标题行
     filtered_output = [
         line for line in final_output 
-        if line.strip() and not line.strip().startswith('#')
+        if line.strip() and not line.strip().startswith('#') and not line.strip().startswith('====')
     ]
+    # 2. 写入纯节点文件 top10.txt
     with open("output/top10.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(filtered_output))
+    # 3. 写入带注释与评估参数的文件 top10_notes.txt
     with open("output/top10_notes.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(final_output))
 
