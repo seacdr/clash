@@ -11,13 +11,13 @@ import requests
 
 PUBLIC_SOURCES = [
     "https://raw.githubusercontent.com/seacdr/clash/refs/heads/master/output/alvin.txt",
-    "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
-    "https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/top100.txt",
-    "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/vless_configs.txt",
-    "https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/vmess_configs.txt",
-    "https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/hysteria2.txt",
-    "https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/vless.txt",
-    "https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/vmess.txt",
+    #"https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
+    #"https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/top100.txt",
+    #"https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/vless_configs.txt",
+    #"https://raw.githubusercontent.com/ebrasha/free-v2ray-public-list/refs/heads/main/vmess_configs.txt",
+    #"https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/hysteria2.txt",
+    #"https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/vless.txt",
+    #"https://raw.githubusercontent.com/rtwo2/FastNodes/main/sub/protocols/vmess.txt",
     #"https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/hy2.txt",
     #"https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/vless.txt",
     #"https://raw.githubusercontent.com/wiki/gfpcom/free-proxy-list/lists/vmess.txt"
@@ -89,7 +89,13 @@ def tcping(node, timeout=2):
         sock.settimeout(timeout)
         sock.connect((host, port))
         sock.close()
-        node['tcping'] = round((time.time() - start) * 1000, 2)
+        latency = round((time.time() - start) * 1000, 2)
+        
+        # 【新增限制】：如果 TCPing 延迟超过 1000ms，丢弃该节点
+        if latency > 1000:
+            return None
+            
+        node['tcping'] = latency
         return node
     except Exception:
         return None
@@ -193,7 +199,11 @@ def test_url_delay(args):
         t_start = time.time()
         res = requests.get(TEST_URL, proxies=proxies, timeout=5)
         if res.status_code in [200, 204]:
-            url_delay = round((time.time() - t_start) * 1000, 2)
+            delay = round((time.time() - t_start) * 1000, 2)
+            
+            # 【新增限制】：如果 Google 测试延迟超过 1000ms，视为不合格
+            if delay <= 1000:
+                url_delay = delay
     except Exception:
         pass
 
