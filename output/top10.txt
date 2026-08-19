@@ -1,36 +1,12 @@
-# Updated at: 2026-08-18 22:53:48 UTC
+# Updated at: 2026-08-19 00:51:59 UTC
 
 # ==================== SS TOP 10 ====================
 # ==================== TROJAN TOP 10 ====================
 # ==================== VMESS TOP 10 ====================
 # ==================== VLESS TOP 10 ====================
 # ==================== HY2 TOP 10 ====================
-# Rank:1 | TCPing:147.02ms | GoogleDelay:721.09ms | Speed:25407.65KB/s | Score:35186.26
-hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443?insecure=1&sni=nl1.noesissite.ru# By EbraSha 🚧
+# Rank:1 | TCPing:125.12ms | GoogleDelay:1046.75ms | Speed:37777.14KB/s | Score:36055.49
+hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@nl1.noesissite.ru:443/?insecure=1&sni=nl1.noesissite.ru# By EbraSha 🩸
 
-# Rank:2 | TCPing:167.26ms | GoogleDelay:728.83ms | Speed:20310.57KB/s | Score:27829.18
-hysteria2://sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX@cabinet.wwwinternetvideo.click:443?sni=127.0.0.1#%F0%9F%87%A6%F0%9F%87%AA%20United%20Arab%20Emirates%20%C2%B7%20ExpressHost%20%7C%20cabinet.wwwinternetvideo.click%20%233
-
-# Rank:3 | TCPing:167.17ms | GoogleDelay:712.51ms | Speed:17208.72KB/s | Score:24118.4
-hysteria2://sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX@cabinet.wwwinternetvideo.click:443?security=tls&insecure=1&sni=cabinet.wwwinternetvideo.click#%F0%9F%87%A6%F0%9F%87%AA%20United%20Arab%20Emirates%20%C2%B7%20ExpressHost%20%7C%20cabinet.wwwinternetvideo.click%20%232
-
-# Rank:4 | TCPing:167.36ms | GoogleDelay:792.34ms | Speed:17863.29KB/s | Score:22516.56
-hy2://sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX@cabinet.wwwinternetvideo.click:443
-
-# Rank:5 | TCPing:161.23ms | GoogleDelay:905.05ms | Speed:16998.27KB/s | Score:18760.85
-hysteria2://YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc@admin.wwwinternetvideo.click:443?insecure=1#%F0%9F%87%B5%F0%9F%87%B1%20Warsaw%2C%20PL%20%C2%B7%20ExpressHost%20%7C%20admin.wwwinternetvideo.click%20%232
-
-# Rank:6 | TCPing:162.42ms | GoogleDelay:703.06ms | Speed:11965.43KB/s | Score:16994.9
-hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@177.3.212.103:443?insecure=1&sni=nl1.noesissite.ru#%F0%9F%87%B3%F0%9F%87%B1%20Amsterdam%2C%20NL%20%C2%B7%20Fz%20%7C%20177.3.212.103
-
-# Rank:7 | TCPing:161.01ms | GoogleDelay:975.9ms | Speed:14758.7KB/s | Score:15107.69
-hysteria2://YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc@admin.wwwinternetvideo.click:443?security=tls&insecure=1#%F0%9F%87%B5%F0%9F%87%B1%20Warsaw%2C%20PL%20%C2%B7%20ExpressHost%20%7C%20admin.wwwinternetvideo.click%20%231
-
-# Rank:8 | TCPing:145.47ms | GoogleDelay:1055.22ms | Speed:15784.77KB/s | Score:14944.59
-hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@nl1.noesissite.ru:443/?insecure=1&sni=nl1.noesissite.ru#%F0%9F%87%B3%F0%9F%87%B1%20Amsterdam%2C%20NL%20%C2%B7%20Fz%20%7C%20nl1.noesissite.ru
-
-# Rank:9 | TCPing:147.29ms | GoogleDelay:1023.28ms | Speed:6044.34KB/s | Score:5901.06
-hysteria2://042a1881-44e4-4781-bd40-bf75164faf4f@nl1.noesissite.ru:443/?insecure=1&sni=nl1.noesissite.ru# By EbraSha 🔥
-
-# Rank:10 | TCPing:159.42ms | GoogleDelay:1351.79ms | Speed:222.35KB/s | Score:164.36
-hysteria2://C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE@fast.wwwinternetvideo.click:443?insecure=1&sni=fast.wwwinternetvideo.click#%F0%9F%87%AB%F0%9F%87%AE%20Helsinki%2C%20FI%20%C2%B7%20VPSPay%20Networks%20%7C%20fast.wwwinternetvideo.click%20%232
+# Rank:2 | TCPing:129.35ms | GoogleDelay:972.6ms | Speed:296.65KB/s | Score:304.69
+hysteria2://f056b41dc9f2b516e333738d1345a6be46a8ca80a3870ffe@n.nl.cleanersaz.help:443/?insecure=1&sni=n.nl.cleanersaz.help#%F0%9F%87%B3%F0%9F%87%B1%20Amsterdam%2C%20NL%20%C2%B7%20Paul%20Sagov%20%7C%20n.nl.cleanersaz.help%20%232
