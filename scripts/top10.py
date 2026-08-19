@@ -285,7 +285,7 @@ def main():
     for proto, nodes in proto_groups.items():
         print(f"\n---------------- Processing [{proto.upper()}] (Total: {len(nodes)}) ----------------")
         
-        # 1. TCPing 保留前 200
+        # 1. TCPing 保留前 100
         print(f"[{proto}] Stage 1: Multi-threaded TCPing Test...")
         tcp_passed = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
@@ -295,8 +295,8 @@ def main():
                 if res:
                     tcp_passed.append(res)
         
-        tcp_passed = sorted(tcp_passed, key=lambda x: x['tcping'])[:200]
-        print(f"[{proto}] Stage 1 Passed: {len(tcp_passed)} nodes (Keep Top 200)")
+        tcp_passed = sorted(tcp_passed, key=lambda x: x['tcping'])[:100]
+        print(f"[{proto}] Stage 1 Passed: {len(tcp_passed)} nodes (Keep Top 100)")
 
         if not tcp_passed:
             final_results[proto] = []
@@ -345,7 +345,14 @@ def main():
             final_output.append(f"{info}\n{item['link']}\n")
 
     os.makedirs("output", exist_ok=True)
+    # 过滤掉空行和以 '#' 开头的注释/元数据行
+    filtered_output = [
+        line for line in final_output 
+        if line.strip() and not line.strip().startswith('#')
+    ]
     with open("output/top10.txt", "w", encoding="utf-8") as f:
+        f.write("\n".join(filtered_output))
+    with open("output/top10_notes.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(final_output))
 
     print("All tasks finished successfully! Output saved to output/top10.txt")
