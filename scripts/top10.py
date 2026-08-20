@@ -139,9 +139,9 @@ TOP_N = 10
 # 最终评分权重。
 # TCP / URL 是延迟指标，Speed 是吞吐指标。
 FINAL_WEIGHTS = {
-    "tcp": 0.10,
-    "url": 0.20,
-    "speed": 0.70,
+    "tcp": 0.01,
+    "url": 0.01,
+    "speed": 0.98,
 }
 
 
@@ -365,30 +365,30 @@ def tcping(node, timeout=TCP_TIMEOUT):
             sock.connect((host, port))
             latency = (time.perf_counter() - start) * 1000
             samples.append(latency)
-            log(f"[TCP] {label} attempt={attempt}/{TCP_ATTEMPTS} PASS {latency:.2f}ms")
+            #log(f"[TCP] {label} attempt={attempt}/{TCP_ATTEMPTS} PASS {latency:.2f}ms")
         except (OSError, socket.timeout) as e:
             samples.append(None)
-            log(f"[TCP] {label} attempt={attempt}/{TCP_ATTEMPTS} FAIL {short_error(e)}", "WARN")
+            #log(f"[TCP] {label} attempt={attempt}/{TCP_ATTEMPTS} FAIL {short_error(e)}", "WARN")
         except Exception as e:
             samples.append(None)
-            log(f"[TCP] {label} attempt={attempt}/{TCP_ATTEMPTS} EXCEPTION {short_error(e)}", "ERROR")
+            #log(f"[TCP] {label} attempt={attempt}/{TCP_ATTEMPTS} EXCEPTION {short_error(e)}", "ERROR")
         finally:
             sock.close()
 
     valid = [x for x in samples if x is not None]
     if len(valid) < 2:
-        log(f"[TCP] {label} REJECT valid={len(valid)}/{TCP_ATTEMPTS}, samples={samples}", "WARN")
+        #log(f"[TCP] {label} REJECT valid={len(valid)}/{TCP_ATTEMPTS}, samples={samples}", "WARN")
         return None
 
     latency = weighted_average(samples, TCP_WEIGHTS)
     if latency is None or latency > 1000:
-        log(f"[TCP] {label} REJECT weighted={latency}ms (>1000ms)", "WARN")
+        #log(f"[TCP] {label} REJECT weighted={latency}ms (>1000ms)", "WARN")
         return None
 
     result = node.copy()
     result["tcp_samples"] = [round(x, 2) if x is not None else None for x in samples]
     result["tcping"] = round(latency, 2)
-    log(f"[TCP] {label} PASS weighted={latency:.2f}ms samples={result['tcp_samples']}")
+    #log(f"[TCP] {label} PASS weighted={latency:.2f}ms samples={result['tcp_samples']}")
     return result
 
 
@@ -430,7 +430,7 @@ def start_singbox(node_link, local_port, config_prefix, label=""):
         )
         if check.returncode != 0:
             detail = (check.stderr or check.stdout or "").strip()
-            log(f"[SBOX] {label} CONFIG FAIL: {detail[-2000:]}", "ERROR")
+            #log(f"[SBOX] {label} CONFIG FAIL: {detail[-2000:]}", "ERROR")
             return None, None
 
         proc = subprocess.Popen(
@@ -440,7 +440,7 @@ def start_singbox(node_link, local_port, config_prefix, label=""):
         )
 
         if not wait_singbox_ready(local_port):
-            log(f"[SBOX] {label} START FAIL: local port {local_port} not ready; pid={proc.pid}", "ERROR")
+            #log(f"[SBOX] {label} START FAIL: local port {local_port} not ready; pid={proc.pid}", "ERROR")
             try:
                 proc.terminate()
                 proc.wait(timeout=0.5)
@@ -452,7 +452,7 @@ def start_singbox(node_link, local_port, config_prefix, label=""):
                     pass
             return None, None
 
-        log(f"[SBOX] {label} START PASS local=127.0.0.1:{local_port} pid={proc.pid}")
+        #log(f"[SBOX] {label} START PASS local=127.0.0.1:{local_port} pid={proc.pid}")
         return proc, config_path
 
     except FileNotFoundError as e:
@@ -503,36 +503,36 @@ def test_url_delay(session, proxies, label=""):
             ok = response.status_code in (200, 204) and elapsed <= 1000
             if ok:
                 samples.append(elapsed)
-                log(f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} PASS status={response.status_code} {elapsed:.2f}ms")
+                #log(f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} PASS status={response.status_code} {elapsed:.2f}ms")
             else:
                 samples.append(None)
-                log(
-                    f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} FAIL "
-                    f"status={response.status_code} {elapsed:.2f}ms body={response.text[:120]!r}",
-                    "WARN",
-                )
+                #log(
+                #    f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} FAIL "
+                #    f"status={response.status_code} {elapsed:.2f}ms body={response.text[:120]!r}",
+                #    "WARN",
+                #)
         except requests.RequestException as e:
             samples.append(None)
-            log(f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} FAIL {short_error(e)}", "WARN")
+            #log(f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} FAIL {short_error(e)}", "WARN")
         except Exception as e:
             samples.append(None)
-            log(f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} EXCEPTION {short_error(e)}", "ERROR")
+            #log(f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} EXCEPTION {short_error(e)}", "ERROR")
 
     valid = [x for x in samples if x is not None]
     if len(valid) < 2:
-        log(f"[URL] {label} REJECT valid={len(valid)}/{URL_ATTEMPTS}, samples={samples}", "WARN")
+        #log(f"[URL] {label} REJECT valid={len(valid)}/{URL_ATTEMPTS}, samples={samples}", "WARN")
         return None
 
     delay = weighted_average(samples, URL_WEIGHTS)
     if delay is None or delay > 1000:
-        log(f"[URL] {label} REJECT weighted={delay}ms", "WARN")
+        #log(f"[URL] {label} REJECT weighted={delay}ms", "WARN")
         return None
 
     result = {
         "url_samples": [round(x, 2) if x is not None else None for x in samples],
         "url_delay": round(delay, 2),
     }
-    log(f"[URL] {label} PASS weighted={delay:.2f}ms samples={result['url_samples']}")
+    #log(f"[URL] {label} PASS weighted={delay:.2f}ms samples={result['url_samples']}")
     return result
 
 
@@ -551,7 +551,7 @@ def test_download_speed(session, proxies, label=""):
             stream=True,
             headers={"Connection": "keep-alive"},
         ) as response:
-            log(f"[DL] {label} HTTP status={response.status_code} content-length={response.headers.get('Content-Length')}")
+            #log(f"[DL] {label} HTTP status={response.status_code} content-length={response.headers.get('Content-Length')}")
             response.raise_for_status()
 
             for chunk in response.iter_content(chunk_size=DOWNLOAD_CHUNK):
@@ -569,10 +569,10 @@ def test_download_speed(session, proxies, label=""):
                     break
 
     except requests.RequestException as e:
-        log(f"[DL] {label} FAIL {short_error(e)} bytes={total_bytes}", "WARN")
+        #log(f"[DL] {label} FAIL {short_error(e)} bytes={total_bytes}", "WARN")
         return 0.0
     except Exception as e:
-        log(f"[DL] {label} EXCEPTION {short_error(e)}", "ERROR")
+        #log(f"[DL] {label} EXCEPTION {short_error(e)}", "ERROR")
         return 0.0
 
     if measured_start is not None:
@@ -596,47 +596,174 @@ def test_url_and_download(args):
     config_path = None
     session = requests.Session()
 
-    log(f"[STAGE2] {label} START port={port}")
+    details = {
+        "tcp": "UNKNOWN",
+        "tcp_samples": [],
+        "tcp_avg": None,
+
+        "sbox": "NOT_TESTED",
+        "sbox_error": "",
+
+        "url": "NOT_TESTED",
+        "url_samples": [],
+        "url_avg": None,
+
+        "speed": "NOT_TESTED",
+        "speed_value": 0,
+
+        "result": "FAIL",
+        "reason": "",
+    }
+
     try:
-        proc, config_path = start_singbox(
-            node["link"], port, "config_test", label=label
-        )
-        if proc is None:
-            log(f"[STAGE2] {label} FAIL reason=sing-box-start/config", "WARN")
+        # =========================
+        # TCP
+        # =========================
+        details["tcp"] = "PASS"
+
+        if node.get("tcp_samples"):
+            details["tcp_samples"] = node["tcp_samples"]
+
+        if node.get("tcping") is not None:
+            details["tcp_avg"] = node["tcping"]
+
+        # =========================
+        # sing-box
+        # =========================
+        try:
+            proc, config_path = start_singbox(
+                node["link"],
+                port,
+                "config_test",
+                label=label
+            )
+
+            if proc is None:
+                details["sbox"] = "FAIL"
+                details["sbox_error"] = "start/config failed"
+                details["reason"] = "SBOX"
+                return None
+
+            details["sbox"] = "PASS"
+
+        except Exception as e:
+            details["sbox"] = "FAIL"
+            details["sbox_error"] = short_error(e)
+            details["reason"] = "SBOX"
             return None
 
+        # =========================
+        # URL
+        # =========================
         proxies = {
             "http": f"http://127.0.0.1:{port}",
             "https": f"http://127.0.0.1:{port}",
         }
 
-        url_result = test_url_delay(session, proxies, label=label)
-        if url_result is None:
-            log(f"[STAGE2] {label} FAIL reason=URL test", "WARN")
+        try:
+            url_result = test_url_delay(
+                session,
+                proxies,
+                label=label
+            )
+
+            if url_result is None:
+                details["url"] = "FAIL"
+                details["reason"] = "URL"
+                return None
+
+            details["url"] = "PASS"
+            details["url_samples"] = url_result["url_samples"]
+            details["url_avg"] = url_result["url_delay"]
+
+        except Exception as e:
+            details["url"] = "FAIL"
+            details["reason"] = "URL"
             return None
 
-        speed = test_download_speed(session, proxies, label=label)
-        if speed <= 0:
-            log(f"[STAGE3] {label} FAIL reason=download speed=0", "WARN")
+        # =========================
+        # Download
+        # =========================
+        try:
+            speed = test_download_speed(
+                session,
+                proxies,
+                label=label
+            )
+
+            if speed <= 0:
+                details["speed"] = "FAIL"
+                details["reason"] = "DOWNLOAD"
+                return None
+
+            details["speed"] = "PASS"
+            details["speed_value"] = speed
+
+        except Exception as e:
+            details["speed"] = "FAIL"
+            details["reason"] = "DOWNLOAD"
             return None
+
+        # =========================
+        # 全部成功
+        # =========================
+        details["result"] = "PASS"
+        details["reason"] = ""
 
         result = node.copy()
         result.update(url_result)
         result["speed"] = speed
-        log(
-            f"[STAGE2+3] {label} PASS "
-            f"url={result['url_delay']}ms speed={speed}KB/s"
-        )
+
         return result
 
     except Exception as e:
-        log(f"[STAGE2+3] {label} EXCEPTION {short_error(e)}", "ERROR")
-        log(traceback.format_exc().rstrip(), "ERROR")
-        return None
+        details["result"] = "FAIL"
+        details["reason"] = "EXCEPTION"
+
     finally:
+        # ==========================================================
+        # 一个节点只在这里记录一次日志
+        # ==========================================================
+        tcp_text = (
+            f"{details['tcp']} "
+            f"{details['tcp_samples']} "
+            f"avg={details['tcp_avg']}ms"
+        )
+
+        sbox_text = details["sbox"]
+
+        if details["sbox_error"]:
+            sbox_text += f"({details['sbox_error']})"
+
+        url_text = details["url"]
+
+        if details["url_samples"]:
+            url_text += (
+                f" {details['url_samples']} "
+                f"avg={details['url_avg']}ms"
+            )
+
+        speed_text = details["speed"]
+
+        if details["speed_value"]:
+            speed_text += f" {details['speed_value']}KB/s"
+
+        log(
+            f"[NODE] {label} | "
+            f"TCP={tcp_text} | "
+            f"SBOX={sbox_text} | "
+            f"URL={url_text} | "
+            f"SPEED={speed_text} | "
+            f"RESULT={details['result']}"
+            + (
+                f"({details['reason']})"
+                if details["reason"]
+                else ""
+            )
+        )
+
         session.close()
         stop_singbox(proc, config_path)
-        log(f"[STAGE2] {label} END")
 
 
 def add_final_scores(nodes):
@@ -657,15 +784,15 @@ def add_final_scores(nodes):
     max_speed = max(n["speed"] for n in nodes)
 
     # 防止除 0。
-    min_tcp = max(min_tcp, 0.001)
-    min_url = max(min_url, 0.001)
-    max_speed = max(max_speed, 0.001)
+    min_tcp = max(min_tcp, 1)
+    min_url = max(min_url, 1)
+    max_speed = max(max_speed, 1)
 
     results = []
 
     for node in nodes:
-        tcp_score = min_tcp / max(node["tcping"], 0.001)
-        url_score = min_url / max(node["url_delay"], 0.001)
+        tcp_score = min_tcp / max(node["tcping"], 1)
+        url_score = min_url / max(node["url_delay"], 1)
         speed_score = node["speed"] / max_speed
 
         score = (
