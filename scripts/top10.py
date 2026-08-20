@@ -968,6 +968,7 @@ def main():
     # ==============================================================
     log("\n=== Saving Top 10 Results ===")
 
+    filtered_output = []
     final_output = [
         f"# Updated at: "
         f"{time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())}\n"
@@ -993,20 +994,11 @@ def main():
                 f"Speed:{item['speed_score']}]"
             )
 
-            final_output.append(
-                f"{info}\n{item['link']}\n"
-            )
+            filtered_output.append(f"{item['link']}")
+            final_output.append(f"{info}\n{item['link']}\n")
 
     os.makedirs("output", exist_ok=True)
-
-    filtered_output = [
-        line
-        for line in final_output
-        if line.strip()
-        and not line.strip().startswith("#")
-        and not line.strip().startswith("====")
-    ]
-
+    
     with open("output/top10.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(filtered_output))
 
