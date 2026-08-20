@@ -8,6 +8,9 @@ import time
 import subprocess
 import concurrent.futures
 import requests
+import threading
+import traceback
+from datetime import datetime
 
 PUBLIC_SOURCES = [
     "https://raw.githubusercontent.com/seacdr/clash/refs/heads/master/output/alvin.txt",
@@ -27,6 +30,28 @@ TEST_URL = "https://www.google.com/generate_204"
 DOWNLOAD_URL = "https://speed.cloudflare.com/__down?bytes=5000000"  # Cloudflare 5MB 测试文件
 BASE_PORT = 10000  # 多线程 sing-box 独立本地端口起始值
 
+LOG_FILE = "output/test_detailed.log"
+LOG_LOCK = threading.Lock()
+
+def log(message, level="INFO"):
+    """线程安全的控制台 + 文件日志。每个节点的成功/失败都保留。"""
+    line = f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]}] [{level}] {message}"
+    print(line, flush=True)
+    try:
+        os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
+        with LOG_LOCK:
+            with open(LOG_FILE, "a", encoding="utf-8") as f:
+                f.write(line + "\n")
+    except Exception:
+        pass
+
+def node_label(node):
+    """不记录完整 URI，避免把 UUID/密码等敏感字段写进日志。"""
+    return f"{node.get('proto','?').upper()} {node.get('host','?')}:{node.get('port','?')}"
+
+def short_error(exc):
+    return f"{type(exc).__name__}: {exc}"
+
 def fetch_links():
     links = set()
     for url in PUBLIC_SOURCES:
@@ -45,7 +70,7 @@ def fetch_links():
                     if any(line.startswith(p) for p in ['ss://', 'trojan://', 'vmess://', 'vless://', 'hy2://', 'hysteria2://']):
                         links.add(line)
         except Exception as e:
-            print(f"[Fetch Error] {url}: {e}")
+            log(f"[Fetch Error] {url}: {e}")
     return list(links)
 
 def parse_node(link):
@@ -114,10 +139,205 @@ TOP_N = 10
 # 最终评分权重。
 # TCP / URL 是延迟指标，Speed 是吞吐指标。
 FINAL_WEIGHTS = {
-    "tcp": 0.20,
-    "url": 0.30,
-    "speed": 0.50,
+    "tcp": 0.10,
+    "url": 0.20,
+    "speed": 0.70,
 }
+
+
+
+def _b64decode_text(value):
+    value = value.strip()
+    value += "=" * (-len(value) % 4)
+    return base64.urlsafe_b64decode(value).decode("utf-8")
+
+def _parse_transport(q):
+    network = q.get("type") or q.get("network") or "tcp"
+    if network == "ws":
+        return {
+            "type": "ws",
+            "path": q.get("path", "/"),
+            **({"headers": {"Host": q.get("host")}} if q.get("host") else {}),
+        }
+    if network == "grpc":
+        return {
+            "type": "grpc",
+            "service_name": q.get("serviceName") or q.get("service_name", ""),
+        }
+    if network in ("http", "h2"):
+        return {
+            "type": "http",
+            "path": q.get("path", "/"),
+            **({"host": [q.get("host")]} if q.get("host") else {}),
+        }
+    return {"type": "tcp"}
+
+def _parse_tls(q):
+    security = q.get("security", "")
+    if security not in ("tls", "reality"):
+        return None
+
+    tls = {
+        "enabled": True,
+        "server_name": q.get("sni") or q.get("serverName") or q.get("host"),
+    }
+
+    if q.get("alpn"):
+        tls["alpn"] = q.get("alpn").split(",")
+
+    if q.get("insecure") in ("1", "true", "True"):
+        tls["insecure"] = True
+
+    if security == "reality":
+        tls["reality"] = {
+            "enabled": True,
+            "public_key": q.get("pbk") or q.get("publicKey", ""),
+            "short_id": q.get("sid") or q.get("shortId", ""),
+        }
+        if q.get("fp"):
+            tls["utls"] = {"enabled": True, "fingerprint": q["fp"]}
+
+    return tls
+
+def build_singbox_config(node_link, local_port):
+    """
+    将常见 SS / VMess / VLESS / Trojan / Hysteria2 URI 转成 sing-box
+    最小可用测试配置。原文件调用了这个函数，但函数本身缺失，这是
+    Stage 2+3 全部失败的直接原因之一。
+    """
+    parsed = urllib.parse.urlparse(node_link)
+    scheme = parsed.scheme.lower()
+    q = urllib.parse.parse_qs(parsed.query, keep_blank_values=True)
+    q = {k: v[-1] for k, v in q.items()}
+
+    outbound = None
+
+    if scheme == "ss":
+        main = node_link[5:].split("#", 1)[0]
+        if "@" in main:
+            encoded_user, host_port = main.rsplit("@", 1)
+            host, port = host_port.rsplit(":", 1)
+            try:
+                user = _b64decode_text(encoded_user)
+            except Exception:
+                user = urllib.parse.unquote(encoded_user)
+            if ":" not in user:
+                raise ValueError("SS URI 缺少 method:password")
+            method, password = user.split(":", 1)
+        else:
+            decoded = _b64decode_text(main)
+            user, host_port = decoded.rsplit("@", 1)
+            host, port = host_port.rsplit(":", 1)
+            method, password = user.split(":", 1)
+
+        outbound = {
+            "type": "shadowsocks",
+            "tag": "proxy",
+            "server": host,
+            "server_port": int(port),
+            "method": method,
+            "password": password,
+        }
+
+    elif scheme == "vmess":
+        data = json.loads(_b64decode_text(node_link[8:]))
+        outbound = {
+            "type": "vmess",
+            "tag": "proxy",
+            "server": data["add"],
+            "server_port": int(data.get("port", 443)),
+            "uuid": data["id"],
+            "security": data.get("scy") or data.get("security", "auto"),
+        }
+        network = data.get("net", "tcp")
+        if network == "ws":
+            outbound["transport"] = {
+                "type": "ws",
+                "path": data.get("path", "/"),
+                **({"headers": {"Host": data["host"]}} if data.get("host") else {}),
+            }
+        elif network == "grpc":
+            outbound["transport"] = {
+                "type": "grpc",
+                "service_name": data.get("path", ""),
+            }
+        if data.get("tls", "").lower() in ("tls", "1", "true"):
+            outbound["tls"] = {
+                "enabled": True,
+                "server_name": data.get("sni") or data.get("host") or data["add"],
+            }
+
+    elif scheme == "vless":
+        if not parsed.username or not parsed.hostname:
+            raise ValueError("VLESS URI 缺少 UUID 或服务器")
+        outbound = {
+            "type": "vless",
+            "tag": "proxy",
+            "server": parsed.hostname,
+            "server_port": parsed.port or 443,
+            "uuid": urllib.parse.unquote(parsed.username),
+        }
+        if q.get("flow"):
+            outbound["flow"] = q["flow"]
+        tls = _parse_tls(q)
+        if tls:
+            outbound["tls"] = tls
+        outbound["transport"] = _parse_transport(q)
+
+    elif scheme == "trojan":
+        if not parsed.username or not parsed.hostname:
+            raise ValueError("Trojan URI 缺少 password 或服务器")
+        outbound = {
+            "type": "trojan",
+            "tag": "proxy",
+            "server": parsed.hostname,
+            "server_port": parsed.port or 443,
+            "password": urllib.parse.unquote(parsed.username),
+        }
+        tls = _parse_tls(q) or {
+            "enabled": True,
+            "server_name": q.get("sni") or parsed.hostname,
+        }
+        outbound["tls"] = tls
+        if q.get("type") or q.get("network"):
+            outbound["transport"] = _parse_transport(q)
+
+    elif scheme in ("hy2", "hysteria2"):
+        password = urllib.parse.unquote(parsed.username or "")
+        if not parsed.hostname:
+            raise ValueError("Hysteria2 URI 缺少服务器")
+        outbound = {
+            "type": "hysteria2",
+            "tag": "proxy",
+            "server": parsed.hostname,
+            "server_port": parsed.port or 443,
+            "password": password,
+        }
+        tls = {
+            "enabled": True,
+            "server_name": q.get("sni") or parsed.hostname,
+        }
+        if q.get("insecure") in ("1", "true", "True"):
+            tls["insecure"] = True
+        outbound["tls"] = tls
+
+    else:
+        raise ValueError(f"不支持的协议: {scheme}")
+
+    return {
+        "log": {"level": "error"},
+        "inbounds": [{
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "127.0.0.1",
+            "listen_port": int(local_port),
+        }],
+        "outbounds": [
+            outbound,
+            {"type": "direct", "tag": "direct"},
+        ],
+        "route": {"final": "proxy"},
+    }
 
 
 def weighted_average(values, weights):
@@ -132,16 +352,12 @@ def weighted_average(values, weights):
 
 
 def tcping(node, timeout=TCP_TIMEOUT):
-    """
-    TCPing 连续 3 次。
-    使用加权平均，默认最近一次权重最高。
-    比原版只测一次更稳定，同时只建立/关闭 socket，不启动 sing-box。
-    """
-    host = node["host"]
-    port = node["port"]
+    """TCPing x3；无论成功/失败都记录每一次测试。"""
+    label = node_label(node)
+    host, port = node["host"], node["port"]
     samples = []
 
-    for _ in range(TCP_ATTEMPTS):
+    for attempt in range(1, TCP_ATTEMPTS + 1):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(timeout)
         start = time.perf_counter()
@@ -149,24 +365,30 @@ def tcping(node, timeout=TCP_TIMEOUT):
             sock.connect((host, port))
             latency = (time.perf_counter() - start) * 1000
             samples.append(latency)
-        except (OSError, socket.timeout):
+            log(f"[TCP] {label} attempt={attempt}/{TCP_ATTEMPTS} PASS {latency:.2f}ms")
+        except (OSError, socket.timeout) as e:
             samples.append(None)
+            log(f"[TCP] {label} attempt={attempt}/{TCP_ATTEMPTS} FAIL {short_error(e)}", "WARN")
+        except Exception as e:
+            samples.append(None)
+            log(f"[TCP] {label} attempt={attempt}/{TCP_ATTEMPTS} EXCEPTION {short_error(e)}", "ERROR")
         finally:
             sock.close()
 
     valid = [x for x in samples if x is not None]
     if len(valid) < 2:
+        log(f"[TCP] {label} REJECT valid={len(valid)}/{TCP_ATTEMPTS}, samples={samples}", "WARN")
         return None
 
     latency = weighted_average(samples, TCP_WEIGHTS)
-
-    # 仍保留原来的 1000ms 淘汰逻辑。
     if latency is None or latency > 1000:
+        log(f"[TCP] {label} REJECT weighted={latency}ms (>1000ms)", "WARN")
         return None
 
     result = node.copy()
     result["tcp_samples"] = [round(x, 2) if x is not None else None for x in samples]
     result["tcping"] = round(latency, 2)
+    log(f"[TCP] {label} PASS weighted={latency:.2f}ms samples={result['tcp_samples']}")
     return result
 
 
@@ -191,36 +413,56 @@ def wait_singbox_ready(port, timeout=SINGBOX_START_TIMEOUT):
     return False
 
 
-def start_singbox(node_link, local_port, config_prefix):
-    """启动一次 sing-box，并返回 proc/config_path。"""
-    config = build_singbox_config(node_link, local_port)
+def start_singbox(node_link, local_port, config_prefix, label=""):
+    """启动 sing-box；配置错误/启动错误都写入详细日志。"""
     config_path = f"/tmp/{config_prefix}_{local_port}.json"
+    try:
+        config = build_singbox_config(node_link, local_port)
+        with open(config_path, "w", encoding="utf-8") as f:
+            json.dump(config, f, ensure_ascii=False, indent=2)
 
-    with open(config_path, "w", encoding="utf-8") as f:
-        json.dump(config, f, separators=(",", ":"))
+        # 先让 sing-box 自己校验配置，避免错误被 DEVNULL 吞掉。
+        check = subprocess.run(
+            ["sing-box", "check", "-c", config_path],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        if check.returncode != 0:
+            detail = (check.stderr or check.stdout or "").strip()
+            log(f"[SBOX] {label} CONFIG FAIL: {detail[-2000:]}", "ERROR")
+            return None, None
 
-    proc = subprocess.Popen(
-        ["sing-box", "run", "-c", config_path],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
+        proc = subprocess.Popen(
+            ["sing-box", "run", "-c", config_path],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
 
-    if not wait_singbox_ready(local_port):
-        try:
-            proc.terminate()
-            proc.wait(timeout=0.5)
-        except Exception:
+        if not wait_singbox_ready(local_port):
+            log(f"[SBOX] {label} START FAIL: local port {local_port} not ready; pid={proc.pid}", "ERROR")
             try:
-                proc.kill()
+                proc.terminate()
+                proc.wait(timeout=0.5)
             except Exception:
-                pass
-        try:
-            os.remove(config_path)
-        except OSError:
-            pass
-        return None, None
+                try:
+                    proc.kill()
+                    proc.wait(timeout=0.5)
+                except Exception:
+                    pass
+            return None, None
 
-    return proc, config_path
+        log(f"[SBOX] {label} START PASS local=127.0.0.1:{local_port} pid={proc.pid}")
+        return proc, config_path
+
+    except FileNotFoundError as e:
+        log(f"[SBOX] {label} START FAIL: sing-box executable not found: {e}", "ERROR")
+    except subprocess.TimeoutExpired as e:
+        log(f"[SBOX] {label} CONFIG CHECK TIMEOUT: {e}", "ERROR")
+    except Exception as e:
+        log(f"[SBOX] {label} START EXCEPTION: {short_error(e)}", "ERROR")
+        log(traceback.format_exc().rstrip(), "ERROR")
+    return None, None
 
 
 def stop_singbox(proc, config_path):
@@ -243,14 +485,11 @@ def stop_singbox(proc, config_path):
             pass
 
 
-def test_url_delay(session, proxies):
-    """
-    Google 204 连续 3 次。
-    Session + 同一个 sing-box 进程复用连接，避免每次重新建立代理链路。
-    """
+def test_url_delay(session, proxies, label=""):
+    """Google 204 x3；记录状态码、耗时、异常。"""
     samples = []
 
-    for _ in range(URL_ATTEMPTS):
+    for attempt in range(1, URL_ATTEMPTS + 1):
         try:
             start = time.perf_counter()
             response = session.get(
@@ -261,34 +500,44 @@ def test_url_delay(session, proxies):
             )
             elapsed = (time.perf_counter() - start) * 1000
 
-            if response.status_code in (200, 204) and elapsed <= 1000:
+            ok = response.status_code in (200, 204) and elapsed <= 1000
+            if ok:
                 samples.append(elapsed)
+                log(f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} PASS status={response.status_code} {elapsed:.2f}ms")
             else:
                 samples.append(None)
-        except requests.RequestException:
+                log(
+                    f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} FAIL "
+                    f"status={response.status_code} {elapsed:.2f}ms body={response.text[:120]!r}",
+                    "WARN",
+                )
+        except requests.RequestException as e:
             samples.append(None)
+            log(f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} FAIL {short_error(e)}", "WARN")
+        except Exception as e:
+            samples.append(None)
+            log(f"[URL] {label} attempt={attempt}/{URL_ATTEMPTS} EXCEPTION {short_error(e)}", "ERROR")
 
     valid = [x for x in samples if x is not None]
-
-    # 3 次至少成功 2 次才认为节点稳定。
     if len(valid) < 2:
+        log(f"[URL] {label} REJECT valid={len(valid)}/{URL_ATTEMPTS}, samples={samples}", "WARN")
         return None
 
     delay = weighted_average(samples, URL_WEIGHTS)
     if delay is None or delay > 1000:
+        log(f"[URL] {label} REJECT weighted={delay}ms", "WARN")
         return None
 
-    return {
+    result = {
         "url_samples": [round(x, 2) if x is not None else None for x in samples],
         "url_delay": round(delay, 2),
     }
+    log(f"[URL] {label} PASS weighted={delay:.2f}ms samples={result['url_samples']}")
+    return result
 
 
-def test_download_speed(session, proxies):
-    """
-    下载测速与 URL 延迟测试共用同一个 sing-box + requests.Session。
-    不再重复启动/关闭 sing-box，因此省掉一次完整代理启动成本。
-    """
+def test_download_speed(session, proxies, label=""):
+    """下载测速；记录 HTTP 状态、字节数、耗时、异常。"""
     speed = 0.0
     total_bytes = 0
     start = time.perf_counter()
@@ -302,6 +551,7 @@ def test_download_speed(session, proxies):
             stream=True,
             headers={"Connection": "keep-alive"},
         ) as response:
+            log(f"[DL] {label} HTTP status={response.status_code} content-length={response.headers.get('Content-Length')}")
             response.raise_for_status()
 
             for chunk in response.iter_content(chunk_size=DOWNLOAD_CHUNK):
@@ -310,8 +560,6 @@ def test_download_speed(session, proxies):
 
                 now = time.perf_counter()
                 elapsed = now - start
-
-                # 只统计预热后的数据。
                 if elapsed >= DOWNLOAD_WARMUP:
                     if measured_start is None:
                         measured_start = now
@@ -320,7 +568,11 @@ def test_download_speed(session, proxies):
                 if elapsed >= DOWNLOAD_MAX_TIME:
                     break
 
-    except requests.RequestException:
+    except requests.RequestException as e:
+        log(f"[DL] {label} FAIL {short_error(e)} bytes={total_bytes}", "WARN")
+        return 0.0
+    except Exception as e:
+        log(f"[DL] {label} EXCEPTION {short_error(e)}", "ERROR")
         return 0.0
 
     if measured_start is not None:
@@ -328,29 +580,29 @@ def test_download_speed(session, proxies):
         if duration > 0 and total_bytes > 0:
             speed = (total_bytes / 1024.0) / duration
 
-    return round(speed, 2)
+    speed = round(speed, 2)
+    if speed > 0:
+        log(f"[DL] {label} PASS speed={speed}KB/s bytes={total_bytes} measured={max(0, time.perf_counter()-measured_start if measured_start else 0):.2f}s")
+    else:
+        log(f"[DL] {label} FAIL speed=0 bytes={total_bytes}", "WARN")
+    return speed
 
 
 def test_url_and_download(args):
-    """
-    核心优化：
-      1. 一个节点只启动一次 sing-box
-      2. URL 连续 3 次
-      3. URL 完成后直接测速
-      4. 同一个 requests.Session 复用连接
-      5. 不再存在原来的 Stage 2 -> Stage 3 二次启动 sing-box
-    """
-    node, port = args
+    """一个节点一次 sing-box：启动 -> URL x3 -> 下载 -> 统一记录最终结果。"""
+    node, port, node_index = args
+    label = f"#{node_index} {node_label(node)}"
     proc = None
     config_path = None
+    session = requests.Session()
 
+    log(f"[STAGE2] {label} START port={port}")
     try:
         proc, config_path = start_singbox(
-            node["link"],
-            port,
-            "config_test",
+            node["link"], port, "config_test", label=label
         )
         if proc is None:
+            log(f"[STAGE2] {label} FAIL reason=sing-box-start/config", "WARN")
             return None
 
         proxies = {
@@ -358,29 +610,33 @@ def test_url_and_download(args):
             "https": f"http://127.0.0.1:{port}",
         }
 
-        session = requests.Session()
-
-        url_result = test_url_delay(session, proxies)
+        url_result = test_url_delay(session, proxies, label=label)
         if url_result is None:
+            log(f"[STAGE2] {label} FAIL reason=URL test", "WARN")
             return None
 
-        # URL 已经证明代理链路可用，立即复用当前连接进行测速。
-        speed = test_download_speed(session, proxies)
+        speed = test_download_speed(session, proxies, label=label)
         if speed <= 0:
+            log(f"[STAGE3] {label} FAIL reason=download speed=0", "WARN")
             return None
 
         result = node.copy()
         result.update(url_result)
         result["speed"] = speed
-
+        log(
+            f"[STAGE2+3] {label} PASS "
+            f"url={result['url_delay']}ms speed={speed}KB/s"
+        )
         return result
 
+    except Exception as e:
+        log(f"[STAGE2+3] {label} EXCEPTION {short_error(e)}", "ERROR")
+        log(traceback.format_exc().rstrip(), "ERROR")
+        return None
     finally:
-        try:
-            session.close()
-        except Exception:
-            pass
+        session.close()
         stop_singbox(proc, config_path)
+        log(f"[STAGE2] {label} END")
 
 
 def add_final_scores(nodes):
@@ -429,14 +685,19 @@ def add_final_scores(nodes):
 
 
 def main():
-    print("=== Step 1: Fetching Raw Nodes ===")
+    os.makedirs("output", exist_ok=True)
+    with LOG_LOCK:
+        with open(LOG_FILE, "w", encoding="utf-8") as f:
+            f.write(f"=== Detailed test log started {datetime.now().isoformat()} ===\\n")
+    log("=== Step 1: Fetching Raw Nodes ===")
     raw_links = fetch_links()
-    print(f"Total raw nodes fetched: {len(raw_links)}")
+    log(f"Total raw nodes fetched: {len(raw_links)}")
 
     parsed_nodes = []
     for link in raw_links:
         item = parse_node(link)
         if item and item["host"] and item["port"]:
+            item["_node_index"] = len(parsed_nodes) + 1
             parsed_nodes.append(item)
 
     proto_groups = {
@@ -455,7 +716,7 @@ def main():
     final_results = {}
 
     for proto, nodes in proto_groups.items():
-        print(
+        log(
             f"\n---------------- Processing "
             f"[{proto.upper()}] (Total: {len(nodes)}) ----------------"
         )
@@ -463,7 +724,7 @@ def main():
         # ==========================================================
         # Stage 1：TCPing
         # ==========================================================
-        print(
+        log(
             f"[{proto}] Stage 1: TCPing x{TCP_ATTEMPTS} "
             f"(weights={TCP_WEIGHTS})..."
         )
@@ -480,13 +741,14 @@ def main():
                     result = future.result()
                     if result:
                         tcp_passed.append(result)
-                except Exception:
-                    pass
+                except Exception as e:
+                    log(f"[TCP] FUTURE EXCEPTION {short_error(e)}", "ERROR")
+                    log(traceback.format_exc().rstrip(), "ERROR")
 
         tcp_passed.sort(key=lambda x: x["tcping"])
         tcp_passed = tcp_passed[:TCP_KEEP]
 
-        print(
+        log(
             f"[{proto}] Stage 1 Passed: "
             f"{len(tcp_passed)} nodes (Keep Top {TCP_KEEP})"
         )
@@ -507,7 +769,7 @@ def main():
         #   每个节点只启动一次 sing-box
         #   URL x3 -> Download
         #
-        print(
+        log(
             f"[{proto}] Stage 2+3: URL x{URL_ATTEMPTS} "
             f"+ Download in ONE sing-box session..."
         )
@@ -519,7 +781,7 @@ def main():
         test_workers = min(12, max(1, len(tcp_passed)))
 
         test_tasks = [
-            (node, BASE_PORT + 1000 + idx)
+            (node, BASE_PORT + 1000 + idx, node.get("_node_index", idx + 1))
             for idx, node in enumerate(tcp_passed)
         ]
 
@@ -536,10 +798,11 @@ def main():
                     result = future.result()
                     if result:
                         test_results.append(result)
-                except Exception:
-                    pass
+                except Exception as e:
+                    log(f"[STAGE2+3] FUTURE EXCEPTION {short_error(e)}", "ERROR")
+                    log(traceback.format_exc().rstrip(), "ERROR")
 
-        print(
+        log(
             f"[{proto}] URL+Speed Passed: "
             f"{len(test_results)} nodes"
         )
@@ -566,7 +829,7 @@ def main():
             reverse=True,
         )[:TOP_N]
 
-        print(
+        log(
             f"[{proto}] Completed: "
             f"Top {len(top10)} selected!"
         )
@@ -576,7 +839,7 @@ def main():
     # ==============================================================
     # 保存结果
     # ==============================================================
-    print("\n=== Saving Top 10 Results ===")
+    log("\n=== Saving Top 10 Results ===")
 
     final_output = [
         f"# Updated at: "
@@ -589,6 +852,7 @@ def main():
         )
 
         for idx, item in enumerate(top10, 1):
+            item = {k: v for k, v in item.items() if not k.startswith("_")}
             info = (
                 f"# Rank:{idx} | "
                 f"TCP:{item['tcping']}ms "
@@ -622,7 +886,7 @@ def main():
     with open("output/top10_notes.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(final_output))
 
-    print(
+    log(
         "All tasks finished successfully! "
         "Output saved to output/top10.txt"
     )
