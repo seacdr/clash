@@ -1,61 +1,49 @@
-# Updated at: 2026-10-12 14:49:01 UTC
+# Updated at: 2026-10-12 22:48:19 UTC
 
 # ==================== SS TOP 10 ====================
-# Rank:1 | TCP:53.84ms (samples=[49.37, 54.75, 55.61]) | GoogleDelay:98.48ms (samples=[238.15, 50.9, 52.44]) | Speed:1073182.94KB/s | Score:100.0 [TCP:100.0, URL:100.0, Speed:100.0]
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@156.146.38.168:443#US 🇺🇸 | @Raydikalx | F4AF2E
+# Rank:1 | TCP:44.18ms (samples=[38.92, 39.16, 49.32]) | GoogleDelay:71.21ms (samples=[156.17, 42.28, 43.2]) | Speed:605073.81KB/s | Score:99.64 [TCP:64.28, URL:100.0, Speed:100.0]
+ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@173.244.56.9:443#US 🇺🇸 | @Raydikalx | E2EDF3
 
-# Rank:2 | TCP:66.56ms (samples=[66.82, 66.13, 66.64]) | GoogleDelay:109.88ms (samples=[217.59, 82.25, 69.84]) | Speed:23883.79KB/s | Score:3.89 [TCP:80.89, URL:89.63, Speed:2.23]
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@37.19.198.243:443#US 🇺🇸 | @Raydikalx | 02CE4D
+# Rank:2 | TCP:57.83ms (samples=[61.01, 48.18, 61.07]) | GoogleDelay:108.62ms (samples=[231.09, 67.6, 67.88]) | Speed:9079.89KB/s | Score:2.62 [TCP:49.11, URL:65.56, Speed:1.5]
+ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@149.22.95.183:443#CA 🇨🇦 | @Raydikalx | DEBC1A
 
-# Rank:3 | TCP:66.16ms (samples=[66.23, 66.17, 66.13]) | GoogleDelay:107.54ms (samples=[216.86, 73.28, 70.01]) | Speed:21742.02KB/s | Score:3.71 [TCP:81.38, URL:91.58, Speed:2.03]
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@37.19.198.244:443#US 🇺🇸 | @Raydikalx | BB7720
-
-# Rank:4 | TCP:66.47ms (samples=[66.17, 66.32, 66.69]) | GoogleDelay:106.45ms (samples=[221.82, 68.19, 67.9]) | Speed:21121.91KB/s | Score:3.66 [TCP:81.0, URL:92.51, Speed:1.97]
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@37.19.198.160:443#US 🇺🇸 | @Raydikalx | 9366BE
-
-# Rank:5 | TCP:66.33ms (samples=[66.14, 66.73, 66.23]) | GoogleDelay:106.25ms (samples=[219.38, 68.55, 68.54]) | Speed:20699.59KB/s | Score:3.63 [TCP:81.17, URL:92.69, Speed:1.93]
-ss://YWVzLTEyOC1nY206c2hhZG93c29ja3M=@37.19.198.236:443#US 🇺🇸 | @Raydikalx | 088543
-
-# Rank:6 | TCP:66.8ms (samples=[67.4, 66.35, 66.73]) | GoogleDelay:108.09ms (samples=[218.71, 72.43, 70.61]) | Speed:18528.45KB/s | Score:3.41 [TCP:80.6, URL:91.11, Speed:1.73]
+# Rank:3 | TCP:31.5ms (samples=[30.86, 31.32, 31.91]) | GoogleDelay:81.33ms (samples=[219.18, 34.41, 35.87]) | Speed:3781.68KB/s | Score:2.39 [TCP:90.16, URL:87.56, Speed:0.62]
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpab1p0ZlBPeVZ2bUtBUlVO@140.82.63.79:8388#US 🇺🇸 | @Raydikalx | FC32AF
 
-# Rank:7 | TCP:63.46ms (samples=[65.88, 62.4, 62.78]) | GoogleDelay:107.78ms (samples=[220.48, 68.64, 71.01]) | Speed:12189.02KB/s | Score:2.88 [TCP:84.84, URL:91.37, Speed:1.14]
+# Rank:4 | TCP:28.4ms (samples=[33.08, 27.7, 26.4]) | GoogleDelay:85.45ms (samples=[254.69, 27.59, 29.76]) | Speed:1224.02KB/s | Score:2.03 [TCP:100.0, URL:83.34, Speed:0.2]
 ss://YWVzLTI1Ni1nY206a0RXdlhZWm9UQmNHa0M0@15.204.233.41:8882#US 🇺🇸 | @Raydikalx | 5DCDAB
 
-# Rank:8 | TCP:67.15ms (samples=[67.33, 67.06, 67.11]) | GoogleDelay:108.52ms (samples=[225.88, 69.3, 69.44]) | Speed:10618.49KB/s | Score:2.68 [TCP:80.18, URL:90.75, Speed:0.99]
-ss://YWVzLTI1Ni1nY206WTZSOXBBdHZ4eHptR0M=@51.222.200.165:5000#CA 🇨🇦 | @Raydikalx | 004741
-
-# Rank:9 | TCP:62.5ms (samples=[61.32, 63.26, 62.7]) | GoogleDelay:123.58ms (samples=[290.13, 66.02, 69.09]) | Speed:7437.72KB/s | Score:2.34 [TCP:86.14, URL:79.69, Speed:0.69]
-ss://YWVzLTI1Ni1nY206Rm9PaUdsa0FBOXlQRUdQ@15.204.246.132:7307#US 🇺🇸 | @Raydikalx | 1F5965
-
-# Rank:10 | TCP:69.74ms (samples=[76.21, 67.76, 67.5]) | GoogleDelay:113.88ms (samples=[241.69, 71.18, 71.32]) | Speed:818.32KB/s | Score:1.71 [TCP:77.2, URL:86.48, Speed:0.08]
-ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTplNWM2NXBo@ca225.vpnbook.com:443#CA 🇨🇦 | @Raydikalx | 639D87
+# Rank:5 | TCP:38.49ms (samples=[28.96, 41.76, 41.62]) | GoogleDelay:91.43ms (samples=[233.01, 41.9, 45.4]) | Speed:84.29KB/s | Score:1.53 [TCP:73.79, URL:77.88, Speed:0.01]
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTplRGZON1NPRFFjZUlPbUlBYnRKSnRL@198.98.53.130:443#US 🇺🇸 | @Raydikalx | E82A92
 
 # ==================== TROJAN TOP 10 ====================
 # ==================== VMESS TOP 10 ====================
-# Rank:1 | TCP:64.13ms (samples=[63.67, 61.34, 65.77]) | GoogleDelay:76.96ms (samples=[None, 75.67, 77.6]) | Speed:20411.98KB/s | Score:99.36 [TCP:36.43, URL:100.0, Speed:100.0]
-vmess://eyJ2IjpudWxsLCJwcyI6IlVTIPCfh7rwn4e4IHwgQFJheWRpa2FseCB8IEIwMDYwOCIsImFkZCI6IjY3LjIyMC45NS4zIiwicG9ydCI6MTgwMDAsImlkIjoiZjhjOGRjM2QtMGQzNy00NmIwLThiMzQtYTcyMzI4ODJmY2ZlIiwiYWlkIjoiMCIsInNjeSI6ImFlcy0xMjgtZ2NtIiwibmV0IjoidGNwIiwidHlwZSI6bnVsbCwiaG9zdCI6bnVsbCwiYWxwbiI6bnVsbCwicGF0aCI6Ii8iLCJ0bHMiOiJub25lIiwic25pIjpudWxsLCJmcCI6bnVsbCwibmFtZSI6IlVTIPCfh7rwn4e4IHwgQFJheWRpa2FseCB8IEIwMDYwOCJ9
+# Rank:1 | TCP:20.3ms (samples=[21.08, 19.81, 20.17]) | GoogleDelay:89.02ms (samples=[246.2, 35.36, 37.25]) | Speed:17174.99KB/s | Score:99.6 [TCP:100.0, URL:60.09, Speed:100.0]
+vmess://eyJhZGQiOiIxMzQuMTk1LjE5Ni4yMTEiLCJhaWQiOiIwIiwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6IkBQcm94eVZQTjExIiwiaWQiOiJmOGM4ZGMzZC0wZDM3LTQ2YjAtOGIzNC1hNzIzMjg4MmZjZmUiLCJpbnNlY3VyZSI6IjEiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiL0BQcm94eVZQTjExIiwicG9ydCI6IjE4MDAwIiwicHMiOiJDQSDwn4eo8J+HpiB8IEBSYXlkaWthbHggfCA4RjhBQjgiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
 
-# Rank:2 | TCP:63.34ms (samples=[62.27, 61.01, 65.04]) | GoogleDelay:81.55ms (samples=[None, 80.05, 82.3]) | Speed:18326.46KB/s | Score:89.3 [TCP:36.88, URL:94.37, Speed:89.78]
-vmess://eyJ2IjoiMiIsInBzIjoiVVMg8J+HuvCfh7ggfCBAUmF5ZGlrYWx4IHwgM0IxRDBBIiwiYWRkIjoiNjcuMjIwLjk1LjMiLCJwb3J0IjoiMTgwMDAiLCJpZCI6ImY4YzhkYzNkLTBkMzctNDZiMC04YjM0LWE3MjMyODgyZmNmZSIsImFpZCI6IjAiLCJzY3kiOiJhdXRvIiwibmV0IjoidGNwIiwidHlwZSI6Im5vbmUiLCJob3N0IjoiIiwicGF0aCI6IiIsInRscyI6IiIsInNuaSI6IiIsImFscG4iOiIiLCJmcCI6IiJ9
+# Rank:2 | TCP:311.16ms (samples=[50.42, 1092.46, 50.89]) | GoogleDelay:53.49ms (samples=[None, 53.23, 53.61]) | Speed:11532.6KB/s | Score:66.87 [TCP:6.52, URL:100.0, Speed:67.15]
+vmess://eyJhZGQiOiIxMjkuMTQ2LjE0My44MCIsImFpZCI6MCwiaG9zdCI6IiIsImlkIjoiZDQ2MDNjYzItZTBlZS00NjUxLTgzZjUtMWRiNWI3MTY4MTc3IiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOiI0ODExMSIsInBzIjoiVVMg8J+HuvCfh7ggfCBAUmF5ZGlrYWx4IHwgOEMzMzFDIiwic25pIjoiMTI5LjE0Ni4xNDMuODAiLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0=
 
-# Rank:3 | TCP:23.36ms (samples=[23.04, 23.52, 23.45]) | GoogleDelay:85.36ms (samples=[260.05, 26.47, 27.47]) | Speed:16984.46KB/s | Score:83.45 [TCP:100.0, URL:90.16, Speed:83.21]
-vmess://eyJ2IjpudWxsLCJwcyI6IlVTIPCfh7rwn4e4IHwgQFJheWRpa2FseCB8IEUzOEREQiIsImFkZCI6IjE2OS4xOTcuMTQyLjIyIiwicG9ydCI6MTgwMDAsImlkIjoiZjhjOGRjM2QtMGQzNy00NmIwLThiMzQtYTcyMzI4ODJmY2ZlIiwiYWlkIjoiMCIsInNjeSI6ImF1dG8iLCJuZXQiOiJ0Y3AiLCJ0eXBlIjpudWxsLCJob3N0IjoiIiwiYWxwbiI6bnVsbCwicGF0aCI6Ii8iLCJ0bHMiOiJub25lIiwic25pIjpudWxsLCJmcCI6bnVsbCwibmFtZSI6IlVTIPCfh7rwn4e4IHwgQFJheWRpa2FseCB8IEUzOEREQiJ9
+# Rank:3 | TCP:32.71ms (samples=[34.21, 33.73, 31.45]) | GoogleDelay:88.55ms (samples=[232.43, 41.29, 40.23]) | Speed:6937.49KB/s | Score:40.81 [TCP:62.06, URL:60.41, Speed:40.39]
+vmess://eyJhZGQiOiIyMy4xNjIuMjAwLjE5OCIsImFpZCI6IjAiLCJhbHBuIjoiIiwiZnAiOiIiLCJob3N0IjoiIiwiaWQiOiJmOGM4ZGMzZC0wZDM3LTQ2YjAtOGIzNC1hNzIzMjg4MmZjZmUiLCJuZXQiOiJ0Y3AiLCJwYXRoIjoiIiwicG9ydCI6IjE4MDAwIiwicHMiOiJDQSDwn4eo8J+HpiB8IEBSYXlkaWthbHggfCA0QkEzQTYiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoiIiwidHlwZSI6IiIsInYiOiIyIn0=
 
-# Rank:4 | TCP:74.64ms (samples=[72.46, 72.8, 76.65]) | GoogleDelay:121.49ms (samples=[258.75, 78.52, 74.35]) | Speed:8183.37KB/s | Score:40.24 [TCP:31.3, URL:63.35, Speed:40.09]
-vmess://eyJ2IjpudWxsLCJwcyI6IlVTIPCfh7rwn4e4IHwgQFJheWRpa2FseCB8IDJCOTdDRiIsImFkZCI6IjM4LjExMC4xLjI0NiIsInBvcnQiOjE4MDAwLCJpZCI6ImY4YzhkYzNkLTBkMzctNDZiMC04YjM0LWE3MjMyODgyZmNmZSIsImFpZCI6IjAiLCJzY3kiOiJhdXRvIiwibmV0IjoidGNwIiwidHlwZSI6bnVsbCwiaG9zdCI6IiIsImFscG4iOm51bGwsInBhdGgiOiIvIiwidGxzIjoibm9uZSIsInNuaSI6bnVsbCwiZnAiOm51bGwsIm5hbWUiOiJVUyDwn4e68J+HuCB8IEBSYXlkaWthbHggfCAyQjk3Q0YifQ==
-
-# Rank:5 | TCP:73.2ms (samples=[75.55, 72.27, 72.49]) | GoogleDelay:132.75ms (samples=[306.88, 74.78, 74.66]) | Speed:4298.02KB/s | Score:21.53 [TCP:31.91, URL:57.97, Speed:21.06]
+# Rank:4 | TCP:43.58ms (samples=[43.81, 43.6, 43.45]) | GoogleDelay:99.16ms (samples=[254.61, 47.02, 47.51]) | Speed:5457.1KB/s | Score:32.14 [TCP:46.58, URL:53.94, Speed:31.77]
 vmess://eyJhZGQiOiIzOC45MS4xMDcuNDkiLCJhaWQiOiIwIiwiYWxwbiI6bnVsbCwiZnAiOm51bGwsImhvc3QiOm51bGwsImlkIjoiZjhjOGRjM2QtMGQzNy00NmIwLThiMzQtYTcyMzI4ODJmY2ZlIiwibmFtZSI6IlVTIPCfh7rwn4e4IHwgQFJheWRpa2FseCB8IDNBNjEwQyIsIm5ldCI6InRjcCIsInBhdGgiOiIvIiwicG9ydCI6MTgwMDAsInNjeSI6ImF1dG8iLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJzbmkiOm51bGwsInRscyI6Im5vbmUiLCJ0eXBlIjpudWxsLCJ2IjpudWxsLCJwcyI6IlVTIPCfh7rwn4e4IHwgQFJheWRpa2FseCB8IDNBNjEwQyJ9
 
-# Rank:6 | TCP:37.59ms (samples=[37.57, 37.61, 37.58]) | GoogleDelay:100.5ms (samples=[276.19, 41.84, 41.97]) | Speed:2155.6KB/s | Score:11.74 [TCP:62.14, URL:76.58, Speed:10.56]
+# Rank:5 | TCP:47.27ms (samples=[45.95, 46.36, 48.38]) | GoogleDelay:94.66ms (samples=[225.59, 51.44, 50.8]) | Speed:4972.57KB/s | Score:29.37 [TCP:42.94, URL:56.51, Speed:28.95]
+vmess://eyJ2IjpudWxsLCJwcyI6IlVTIPCfh7rwn4e4IHwgQFJheWRpa2FseCB8IEUzOEREQiIsImFkZCI6IjE2OS4xOTcuMTQyLjIyIiwicG9ydCI6MTgwMDAsImlkIjoiZjhjOGRjM2QtMGQzNy00NmIwLThiMzQtYTcyMzI4ODJmY2ZlIiwiYWlkIjoiMCIsInNjeSI6ImF1dG8iLCJuZXQiOiJ0Y3AiLCJ0eXBlIjpudWxsLCJob3N0IjoiIiwiYWxwbiI6bnVsbCwicGF0aCI6Ii8iLCJ0bHMiOiJub25lIiwic25pIjpudWxsLCJmcCI6bnVsbCwibmFtZSI6IlVTIPCfh7rwn4e4IHwgQFJheWRpa2FseCB8IEUzOEREQiJ9
+
+# Rank:6 | TCP:49.8ms (samples=[49.89, 50.13, 49.6]) | GoogleDelay:105.03ms (samples=[252.58, 54.2, 56.67]) | Speed:3814.44KB/s | Score:22.68 [TCP:40.76, URL:50.93, Speed:22.21]
 vmess://eyJ2IjoiMiIsInBzIjoiVVMg8J+HuvCfh7ggfCBAUmF5ZGlrYWx4IHwgNDUyRUQ1IiwiYWRkIjoiMTI5LjE0Ni43Ny4yNDgiLCJwb3J0IjoiMzk0OTUiLCJpZCI6ImY4MzZjNzM2LTg3ZmMtNGZkZS1hYWJjLTAwODU3ZWNkZmYzZSIsImFpZCI6IjAiLCJzY3kiOiJhdXRvIiwibmV0Ijoid3MiLCJ0eXBlIjoiIiwidGxzIjoiIiwicGF0aCI6Ii9jY3R2MTMubTN1OCJ9
 
-# Rank:7 | TCP:37.84ms (samples=[37.62, 37.53, 38.1]) | GoogleDelay:103.34ms (samples=[286.37, 43.19, 41.9]) | Speed:1844.65KB/s | Score:10.22 [TCP:61.73, URL:74.47, Speed:9.04]
-vmess://eyJ2IjpudWxsLCJwcyI6IlVTIPCfh7rwn4e4IHwgQFJheWRpa2FseCB8IDlCNEY4MyIsImFkZCI6IjEyOS4xNDYuNzcuMjQ4IiwicG9ydCI6Mzk0OTUsImlkIjoiZjgzNmM3MzYtODdmYy00ZmRlLWFhYmMtMDA4NTdlY2RmZjNlIiwiYWlkIjoiMCIsInNjeSI6ImF1dG8iLCJuZXQiOiJ3cyIsInR5cGUiOm51bGwsImhvc3QiOiIxMjkuMTQ2Ljc3LjI0OCIsImFscG4iOm51bGwsInBhdGgiOiIvY2N0djEzLm0zdTgiLCJ0bHMiOiJub25lIiwic25pIjpudWxsLCJmcCI6bnVsbCwibmFtZSI6IlVTIPCfh7rwn4e4IHwgQFJheWRpa2FseCB8IDlCNEY4MyJ9
+# Rank:7 | TCP:49.9ms (samples=[49.43, 50.26, 49.96]) | GoogleDelay:97.44ms (samples=[221.53, 55.02, 56.61]) | Speed:2259.63KB/s | Score:13.85 [TCP:40.68, URL:54.9, Speed:13.16]
+vmess://eyJ2IjoiMiIsInBzIjoiVVMg8J+HuvCfh7ggfCBAUmF5ZGlrYWx4IHwgOUI0RjgzIiwiYWRkIjoiMTI5LjE0Ni43Ny4yNDgiLCJwb3J0IjoiMzk0OTUiLCJpZCI6ImY4MzZjNzM2LTg3ZmMtNGZkZS1hYWJjLTAwODU3ZWNkZmYzZSIsImFpZCI6IjAiLCJzY3kiOiJhdXRvIiwibmV0Ijoid3MiLCJ0eXBlIjoiIiwidGxzIjoiIiwicGF0aCI6Ii9jY3R2MTMubTN1OCIsImhvc3QiOiIxMjkuMTQ2Ljc3LjI0OCJ9
+
+# Rank:8 | TCP:306.51ms (samples=[780.69, 164.95, 140.19]) | GoogleDelay:238.01ms (samples=[None, 196.39, 258.81]) | Speed:366.83KB/s | Score:2.38 [TCP:6.62, URL:22.47, Speed:2.14]
+vmess://eyJhZGQiOiAicmVuZGVyZXItc3RyZWFtLTItMTE0Lm1pcnJhLm5vdyIsICJhaWQiOiAiMCIsICJhbHBuIjogImgyIiwgImZwIjogImZpcmVmb3giLCAiaG9zdCI6ICJyZW5kZXJlci1zdHJlYW0tMi0xMTQubWlycmEubm93IiwgImlkIjogIjhmZmE0MWQ0LWU2YjUtNGFmNS1hOGE5LTY5ZTI2YmVjNzVmNSIsICJuZXQiOiAid3MiLCAicGF0aCI6ICIvYXBpL3YxL2dwdS1zdHJlYW0vc29ja2V0IiwgInBvcnQiOiA0NDMsICJwcyI6ICJcdTRmYzRcdTdmNTdcdTY1YWYgU2FtYXJhIFN0YXRlIFVuaXZlcnNpdHkiLCAic2N5IjogImF1dG8iLCAic2VjdXJpdHkiOiAiYXV0byIsICJzZXJ2ZXJEZXNjcmlwdGlvbiI6ICJcdTA0MTBcdTA0M2FcdTA0NDJcdTA0MzhcdTA0MzJcdTA0M2RcdTA0MzAgXHUwNDNhXHUwNDNlXHUwNDNkXHUwNDQ0XHUwNDM4XHUwNDMzXHUwNDQzXHUwNDQwXHUwNDMwXHUwNDQ2XHUwNDM4XHUwNDRmIFx1MDQzNFx1MDQzYlx1MDQ0ZiBMVEUiLCAic25pIjogInJlbmRlcmVyLXN0cmVhbS0yLTExNC5taXJyYS5ub3ciLCAidGxzIjogInRscyIsICJ0eXBlIjogIm5vbmUiLCAidiI6ICIyIn0=
 
 # ==================== VLESS TOP 10 ====================
-# Rank:1 | TCP:64.67ms (samples=[78.5, 58.33, 60.93]) | GoogleDelay:185.46ms (samples=[313.26, 285.91, 71.34]) | Speed:107721.66KB/s | Score:100.0 [TCP:100.0, URL:100.0, Speed:100.0]
-vless://03dc60cb-a8d4-4226-93fe-0e6cbf77fe5a@uspanel.unixzone.us:30016?security=none&type=ws&path=%2Fusserver&host=uspanel.unixzone.us&sni=uspanel.unixzone.us#US 🇺🇸 | @Raydikalx | 4A29D7
+# Rank:1 | TCP:12.97ms (samples=[14.88, 12.38, 12.31]) | GoogleDelay:82.09ms (samples=[None, 81.91, 82.18]) | Speed:387.45KB/s | Score:100.0 [TCP:100.0, URL:100.0, Speed:100.0]
+vless://c4edb87e-8544-4fa4-bd1c-b0cda9a34b46@104.18.81.30:443?path=%2Fws&security=tls&encryption=none&insecure=0&host=a.cwvps.eu.org&ech=ip.gs%2Budp%3A%2F%2F8.8.8.8&type=ws&allowInsecure=0&sni=a.cwvps.eu.org&fp=unsafe&cs=TLS_AES_256_GCM_SHA384%3ATLS_CHACHA20_POLY1305_SHA256%3ATLS_AES_128_GCM_SHA256%3ATLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384%3ATLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384%3ATLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256%3ATLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256%3ATLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256%3ATLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256%3ATLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA%3ATLS_ECDHE_RSA_WITH_AES_256_CBC_SHA%3ATLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256%3ATLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256&fm=%7B%22tcp%22%3A%20%5B%7B%22type%22%3A%20%22fragment%22%2C%20%22settings%22%3A%20%7B%22packets%22%3A%20%22tlshello%22%2C%20%22lengths%22%3A%20%5B%220%22%2C%20%22104%22%2C%20%221%22%5D%2C%20%22delays%22%3A%20%5B%220%22%5D%2C%20%22maxSplit%22%3A%20%220%22%7D%7D%2C%7B%22type%22%3A%20%22fragment%22%2C%20%22settings%22%3A%20%7B%22packets%22%3A%20%221-1%22%2C%20%22lengths%22%3A%20%5B%22114%22%2C%20%221%22%5D%2C%20%22delays%22%3A%20%5B%221%22%5D%2C%20%22maxSplit%22%3A%20%2211%22%7D%7D%5D%7D#CA 🇨🇦 | @Raydikalx | D64A2B
 
 # ==================== HY2 TOP 10 ====================
