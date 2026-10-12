@@ -14,6 +14,7 @@ def encode_ssr(main, params):
 # 协议名直接取 :// 前的部分，n 为占位符（排序后统一编号，此处忽略）
 HANDLERS = {
     "hysteria2": lambda line, n: f"{line.split('#')[0]}#{urllib.parse.quote(f'hysteria2-{n:02d}')}",
+    "anytls":    lambda line, n: f"{line.split('#')[0]}#{urllib.parse.quote(f'anytls-{n:02d}')}",
     "vmess":     lambda line, n: "vmess://" + b64e(json.dumps({**json.loads(b64d(line[8:])), "ps": f"vmess-{n:02d}"}, ensure_ascii=False)),
     "vless":     lambda line, n: f"{line.split('#')[0]}#{urllib.parse.quote(f'vless-{n:02d}')}",
     "ssr":       lambda line, n: encode_ssr(*[(m := decode_ssr(line))[0], {**m[1], "remarks": f"ssr-{n:02d}"}]),
