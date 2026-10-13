@@ -1,0 +1,102 @@
+name: Fetch Free VPN Nodes
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'Days to look back for updates'
+        required: false
+        default: '7'
+        type: string
+      max_nodes:
+        description: 'Maximum nodes to test per country'
+        required: false
+        default: '50'
+        type: string
+
+env:
+  DAYS_LOOKBACK: ${{ github.event.inputs.days || 7 }}
+  MAX_NODES_PER_COUNTRY: ${{ github.event.inputs.max_nodes || 50 }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  fetch-and-test:
+    name: Fetch and Test VPN Nodes
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      actions: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install requests pyyaml tqdm
+
+      - name: Search GitHub for free VPN nodes
+        id: search
+        run: |
+          python scripts/search_github_nodes.py \
+            --days ${{ env.DAYS_LOOKBACK }} \
+            --output scripts/nodes_raw.json
+
+      - name: Parse and classify sing-box nodes
+        id: parse
+        run: |
+          python scripts/parse_singbox_nodes.py \
+            --input scripts/nodes_raw.json \
+            --output scripts/nodes_classified.json
+
+      - name: Test node connectivity and speed
+        id: test
+        run: |
+          python scripts/test_nodes.py \
+            --input scripts/nodes_classified.json \
+            --output scripts/nodes_tested.json \
+            --max-per-country ${{ env.MAX_NODES_PER_COUNTRY }}
+
+      - name: Generate test log
+        id: log
+        run: |
+          python scripts/generate_log.py \
+            --input scripts/nodes_tested.json \
+            --output singbox-TEST.log
+
+      - name: Generate top 10 per country
+        id: top10
+        run: |
+          python scripts/generate_top10.py \
+            --input scripts/nodes_tested.json \
+            --output-dir .
+
+      - name: Commit and push results
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add singbox-TEST.log singbox-*.json
+          git diff --staged --quiet || git commit -m "chore: update vpn node test results $(date +'%Y-%m-%d')"
+          git push
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: vpn-test-results
+          path: |
+            singbox-TEST.log
+            singbox-*.json
+          retention-days: 30
