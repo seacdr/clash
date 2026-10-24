@@ -1,0 +1,140 @@
+name: Validate and rank proxy nodes
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # 每6小时执行
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'scripts/pipeline.py'
+      - '.github/workflows/pipeline.yml'
+
+# 同一分支不同时运行多份流水线
+concurrency:
+  group: proxy-pipeline-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+env:
+  OUT_PATH: /tmp/sing-box
+
+jobs:
+  filter-and-benchmark:
+    name: Filter, validate and benchmark
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+
+    steps:
+      # 1. 获取完整 Git 历史
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. 固定 Python 版本
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 3. 安装固定版本的 sing-box
+      - name: Install sing-box
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          version='1.12.25'
+          archive="sing-box-${version}-linux-amd64.tar.gz"
+          url="https://github.com/SagerNet/sing-box/releases/download/v${version}/${archive}"
+          tmp_dir="$RUNNER_TEMP/sing-box"
+
+          mkdir -p "$tmp_dir"
+
+          curl \
+            --fail \
+            --silent \
+            --show-error \
+            --location \
+            --retry 3 \
+            --retry-delay 2 \
+            "$url" \
+            --output "$tmp_dir/$archive"
+
+          # 确认下载文件是有效的 gzip/tar 包
+          tar -tzf "$tmp_dir/$archive" > /dev/null
+
+          tar -xzf "$tmp_dir/$archive" -C "$tmp_dir"
+
+          install -m 0755 \
+            "$tmp_dir/sing-box-${version}-linux-amd64/sing-box" \
+            /usr/local/bin/sing-box
+
+          sing-box version
+
+      - name: Get public IP and country
+        run: |
+          response=$(curl -fsS --max-time 10 \
+            'http://ip-api.com/json/?fields=status,message,query,country,countryCode')
+          echo "API response: $response"
+          echo "$response" | jq -e '.status == "success"' >/dev/null
+          echo "Public IP: $(echo "$response" | jq -r '.query')"
+          echo "Country: $(echo "$response" | jq -r '.country')"
+          echo "Country Code: $(echo "$response" | jq -r '.countryCode')"
+
+      # 4. 运行完整流水线
+      - name: Run complete pipeline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -u scripts/pipeline.py run \
+            --stage all \
+            --config scripts/config.json
+
+      # 5. 检查远程分支是否发生变化，然后提交排名
+      - name: Commit rankings
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          git config user.name 'github-actions[bot]'
+          git config user.email \
+            '41898282+github-actions[bot]@users.noreply.github.com'
+
+          git fetch origin master
+
+          # 如果 master 在本次任务运行期间前进，
+          # 不推送可能基于旧代码或旧配置生成的排名。
+          if ! git merge-base --is-ancestor origin/master HEAD; then
+            echo "::error::Remote master advanced during this run."
+            echo "Discarding stale ranking commit; rerun the workflow."
+            exit 1
+          fi
+
+          # 只暂存排名文件，不提交其他输出或缓存。
+          git add -A -- ':(glob)${{ env.OUT_PATH }}/top*.*'
+
+          if git diff --cached --quiet; then
+            echo 'No ranking changes to commit.'
+            exit 0
+          fi
+
+          git commit \
+            -m "chore: refresh validated proxy rankings [skip ci]"
+
+          git push origin HEAD:master
+
+      # 6. 无论前面成功还是失败，都尽量保存排名产物
+      - name: Upload ranking artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: proxy-pipeline-${{ github.run_number }}
+          path: |
+            ${{ env.OUT_PATH }}/top*.*
+          if-no-files-found: warn
+          retention-days: 7
