@@ -1,0 +1,1 @@
+vless://f667a096-5231-4cfb-8759-92bb32473139@77.91.68.70:55983?security=reality&encryption=none&sni=yahoo.com&type=tcp&headerType=none&fp=chrome&alpn=http%252f1.1&pbk=nWQ7b9l9X6N3PrXLgIzOvMM8iSYrqjVHEb9ikWxqYSg&sid=0e#AM_01_1417ms_0.32MB%2Fs

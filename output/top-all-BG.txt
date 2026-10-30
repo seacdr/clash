@@ -1,0 +1,2 @@
+vless://04c808e2-0b59-47b0-a54b-32fc7ef1c902@103.249.134.29:443?security=tls&encryption=none&sni=free.cndyw.ggff.net&insecure=0&allowInsecure=0&type=ws&headerType=none&host=free.cndyw.ggff.net&path=pyip%3Dbpb.yousef.isegaro.com&fp=chrome#BG_01_816ms_3.65MB%2Fs
+vless://6589c320-db68-43cd-a273-b46299bab355@195.123.226.21:443?security=reality&encryption=none&sni=gateway.icloud.com&type=tcp&headerType=none&fp=chrome&flow=xtls-rprx-vision&pbk=rabtI-ymNXBUvYYRwAw8DiR-1pdP7U0WPIaCBHEkgzo&sid=77bb0d07bddbc832#BG_02_604ms_3.59MB%2Fs

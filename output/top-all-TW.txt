@@ -1,0 +1,2 @@
+vless://91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a@152.32.167.33:443?security=reality&encryption=none&sni=www.amazon.com&type=tcp&headerType=none&host=www.amazon.com&path=/&fp=chrome&flow=xtls-rprx-vision&pbk=Q8QwBSGN6J-FqgDV1pYNm0VThS_xNRyQ3DPPa9YZ3j4&sid=cff998a4#TW_01_466ms_4.22MB%2Fs
+vless://91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a@n04.jinggai.online:8443?security=tls&encryption=none&sni=n04.jinggai.online&insecure=0&allowInsecure=0&type=ws&host=n04.jinggai.online&path=/nvl-n04-ws/e0577fe8fd7c8823&fp=chrome#TW_02_565ms_4.13MB%2Fs
