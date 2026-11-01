@@ -1,0 +1,1 @@
+vless://689a62e4-37e7-41de-9e6a-f2a56368c9e2@185.72.11.43:443?security=tls&encryption=none&sni=rs8.speedtestinternet.link&insecure=0&allowInsecure=0&type=tcp&headerType=none&fp=firefox&flow=xtls-rprx-vision#RS_01_559ms_3.28MB%2Fs

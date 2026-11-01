@@ -1,0 +1,1 @@
+vless://59b203b2-b1bc-4e9c-a9e5-ccb8f691bf72@134.185.81.5:47881?security=reality&encryption=none&sni=www.tesla.com&insecure=0&type=tcp&headerType=none&fp=ios&flow=xtls-rprx-vision&pbk=6XmXX1QXGodmtqU37Zx9CDHnCnPtonRdq8ieLmt__g4&sid=38d72071#PE_01_1338ms_1.14MB%2Fs
